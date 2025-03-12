@@ -14,12 +14,19 @@ class Contact
 		std::string	_darkestSecret;
 
 	public:
+		//enum
+		enum field{FIRSTNAME, LASTNAME, NICKNAME, PHONENUMBER, DARKESTSECRET};
+
 		//constructor
 		Contact();
 		
 		//functions
-		void	fieldPrompt();
-		void	addField();
+		void		fieldPrompt(int i);
+		bool		isEmptyInput(const std::string &str);
+		bool		isValidPhoneNumber(const std::string &phoneNumber);
+		void		addField(int i, const std::string &str);
+		std::string	getName(int i);
+		void		printContact();
 };
 
 #endif

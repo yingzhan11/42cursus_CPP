@@ -1,6 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <sstream>
 # include "Contact.hpp"
 
 class PhoneBook
@@ -10,13 +11,16 @@ class PhoneBook
 		int		_totalContacts;
 		int		_nextIndex;
 
-		bool	_isOnlySpace(const std::string &str);
+		void		_displayPhoneBook();
+		std::string	_displayFeild(const std::string &str);
+		int			_getIndex();
 
 	public:
 		PhoneBook();
 		//functions
 		void	addContact();
-		void	searchContact(PhoneBook &phoneBook);
+		void	searchContact();
+		
 };
 
 #endif
