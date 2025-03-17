@@ -1,49 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/17 14:41:56 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/17 14:41:58 by yzhan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
-//constructor
+/**
+ * Constructor
+ */
 PhoneBook::PhoneBook()
 	: _totalContacts(0), _nextIndex(0){}
 
-
-//public functions
-void	PhoneBook::addContact()
+/**
+ * Public functions
+ */
+// Add contacts to phoneBook
+void	PhoneBook::addContacts()
 {
 	std::string	input;
 	Contact		newContact;
 
-	// get 5 feild for a contact
+	// Get 5 feilds for a contact
 	for (int i = 0; i < 5; i++)
 	{
-		// tell user what to enter
+		// Tell user what to enter and get user input
 		newContact.fieldPrompt(i);
-		//get user input
 		if (!std::getline(std::cin, input))
 		{
 			std::cout << "\033[31m" << "Fail to getline/Signal quit\n" << "\033[0m";
 			exit(1);
 		}
-		//check empty field and invalid input
+		// Check empty field and invalid input
 		if (newContact.isEmptyInput(input) || (i == 3 && !newContact.isValidPhoneNumber(input)))
 		{
 			i--;
 			continue;
 		}
-		// add to a contact field
+		// Add to a field
 		else
 			newContact.addField(i, input);
 	}
-	// add the new contact to contactList
+	// Add the new contact to contactList
 	contactList[_nextIndex] = newContact;
 	if (_totalContacts < 8)
 		_totalContacts++;
-	_nextIndex++;
-	if (_nextIndex == 8)
-		_nextIndex = 0;
-	//nextIndex = (nextIndex + 1) % 8;
-
+	_nextIndex = (_nextIndex + 1) % 8;
 }
 
-void PhoneBook::searchContact()
+// Search contacts and diaplay one from phoneBook
+void PhoneBook::searchContacts()
 {
 	int index = -1;
 
@@ -52,19 +64,18 @@ void PhoneBook::searchContact()
 		std::cout << "\033[33m" << "The PhoneBook is empty.\n" << "\033[0m";
 		return ;
 	}
-	//display the whole phone book
+	// Display the whole phone book
 	_displayPhoneBook();
-	//ask fot index
+	// Get the index user enter and show the contact info
 	while (index == -1)
 		index = _getIndex();
-	//show full info
-	if (index > _totalContacts)
-		std::cout << "\033[33m" << "Cannot found this index in the PhoneBook.\n" << "\033[0m";
-	else
-		contactList[index].printContact();
+	contactList[index].printContact();
 }
 
-//private functions
+/**
+ * Private functions
+ */
+// Display the whole phoneBook
 void	PhoneBook::_displayPhoneBook()
 {
 	std::cout << std::setw(10) << "Index" << "|"
@@ -74,12 +85,13 @@ void	PhoneBook::_displayPhoneBook()
 	for (int i = 0; i < _totalContacts; i++)
 	{
 		std::cout << std::setw(10) << i << "|"
+				<< std::setw(10) << _displayFeild(contactList[i].getName(0)) << "|"
 				<< std::setw(10) << _displayFeild(contactList[i].getName(1)) << "|"
-				<< std::setw(10) << _displayFeild(contactList[i].getName(2)) << "|"
-				<< std::setw(10) << _displayFeild(contactList[i].getName(3)) << std::endl;
+				<< std::setw(10) << _displayFeild(contactList[i].getName(2)) << std::endl;
 	}
 }
 
+// Limit the long feild to 10
 std::string	PhoneBook::_displayFeild(const std::string &str)
 {
 	if (str.length() > 10)
@@ -87,6 +99,7 @@ std::string	PhoneBook::_displayFeild(const std::string &str)
 	return (str);
 }
 
+// Get the user input and return the valid index
 int	PhoneBook::_getIndex()
 {
 	std::string	input;
@@ -100,16 +113,23 @@ int	PhoneBook::_getIndex()
 	}
 	if (input.length() < 2)
 	{
+		// Check the validation of input index
 		if (!std::isdigit(input[0]))
 		{
 			std::cout << "\033[33m" << "Invalid input. Please enter a number.\n" << "\033[0m";
 			return (-1);
 		}
+		// Get index
 		std::istringstream	inputNbr(input);
 		inputNbr >> index;
+		if (index >= _totalContacts)
+		{
+			std::cout << "\033[33m" << "Cannot found this index in the PhoneBook. Please try again.\n" << "\033[0m";
+			return (-1);
+		}
 		return (index);
 	}
 	else
-		std::cout << "\033[33m" << "The input is too long. Please enter only one number\n" << "\033[0m";
+		std::cout << "\033[33m" << "The input is too long. Please enter only ONE number.\n" << "\033[0m";
 	return (-1);
 }

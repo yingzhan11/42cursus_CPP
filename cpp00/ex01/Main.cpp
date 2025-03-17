@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/17 14:41:40 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/17 14:41:42 by yzhan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 int main(int argc, char **argv)
@@ -8,7 +20,7 @@ int main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 	{
-		std::cout << "Invalid cmd, please run [./phoneBook]";
+		std::cout << "Invalid cmd, please run [./phoneBook]\n";
 		return 1;
 	}
 	while (1)
@@ -20,14 +32,13 @@ int main(int argc, char **argv)
 			return 1;
 		}
 		if (input == "ADD")
-			phoneBook.addContact();
+			phoneBook.addContacts();
 		else if (input == "SEARCH")
-			phoneBook.searchContact();
+			phoneBook.searchContacts();
 		else if (input == "EXIT")
 			break;
 		else
 			std::cout << "\033[33m" << "Command not found, please enter a correct cmd\n" << "\033[0m";
 	}
 	return 0;
-
 }

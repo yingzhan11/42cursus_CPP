@@ -1,10 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/17 14:41:22 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/17 14:41:25 by yzhan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
-//constructor
+/**
+ * Constructor
+ */
 Contact::Contact()
 	: _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret(""){}
 
-
+/**
+ * Public functions
+ */
+// Display the prompt to user
 void	Contact::fieldPrompt(int i)
 {
 	std::cout << std::left << "\033[34m";
@@ -26,20 +43,20 @@ void	Contact::fieldPrompt(int i)
 			std::cout << std::setw(16) << "Darkest Secret: ";
 			break;
 		default:
-			std::cout << "Invalid field, please try again.\n";
+			std::cout << "Invalid field.\n";
 			break;
 	}
 	std::cout << std::right << "\033[0m";
 }
 
-
+// Check the user input of contact is valid or not
 bool	Contact::isEmptyInput(const std::string &str)
 {
 	bool valid = true;
 
 	if (!str.empty())
 	{
-		for (size_t i = 0; i < str.length(); i++) //????
+		for (size_t i = 0; i < str.length(); i++)
 		{
 			char c = str[i];
 			if (!std::isspace(c))
@@ -54,6 +71,8 @@ bool	Contact::isEmptyInput(const std::string &str)
 	return valid;
 }
 
+
+// Check the phoneNumber feild validation: only '0-9' and a '+' at the beginning
 bool	Contact::isValidPhoneNumber(const std::string &phoneNumber)
 {
     int		plusCount = 0;
@@ -64,12 +83,12 @@ bool	Contact::isValidPhoneNumber(const std::string &phoneNumber)
     {
         if (phoneNumber[i] == '+')
         {
-            if (i != 0) // '+' 必须在开头
+            if (i != 0)
                 valid = false;
 			else
 	            plusCount++;
         }
-        else if (!std::isdigit(phoneNumber[i])) // 只允许 0-9
+        else if (!std::isdigit(phoneNumber[i]))
             valid = false;
 		else
 			nbrCount++;
@@ -103,7 +122,7 @@ void	Contact::addField(int i, const std::string &str)
 			_darkestSecret = str;
 			break;
 		default:
-			std::cout << "\033[33m" << "Invalid field, please try again.\n" << "\033[0m";
+			std::cout << "\033[33m" << "Invalid field to add.\n" << "\033[0m";
 			break;
 	}
 }
