@@ -16,11 +16,11 @@ int	main(void)
 {
 	int	amount = 10;
 	
-	Zombie* zombie = zombieHorde(amount, "Azooo");
+	Zombie* zombie = zombieHorde(amount, "Azooo_");
 
-	while (--amount >= 0)
+	for (int i = 0; i < amount; i++)
 	{
-		zombie[amount].announce();
+		zombie[i].announce();
 	}
 	delete [] zombie;
 	return 0;

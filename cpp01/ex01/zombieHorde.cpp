@@ -12,12 +12,17 @@
 
 #include "Zombie.hpp"
 
-// give all zombie the same name now, i want name with nbr
 Zombie* zombieHorde(int N, std::string name)
 {
+	if (N <= 0)
+		return nullptr;
+
 	Zombie* zombie = new Zombie[N];
 
 	for (int i = 0; i < N; i++)
-		zombie[i].setZombieName(name);
+	{
+		std::string uniqueName = name + std::to_string(i);
+		zombie[i].setZombieName(uniqueName);
+	}
 	return (zombie);
 }
