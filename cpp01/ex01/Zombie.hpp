@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 14:42:07 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/17 14:42:10 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/18 13:37:28 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/18 13:37:29 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include <sstream>
-# include "Contact.hpp"
+#include <iostream>
 
-class PhoneBook
+class Zombie
 {
 	private:
-		Contact	contactList[8];
-		int		_totalContacts;
-		int		_nextIndex;
-
-		void		_displayPhoneBook();
-		std::string	_displayFeild(const std::string &str);
-		int			_getIndex();
+		std::string	_name;
 
 	public:
-		PhoneBook();
+		Zombie(std::string name);
+		Zombie();
+		~Zombie(void);
 
-		void	addContacts();
-		void	searchContacts();
+		void	announce( void );
+		void	setZombieName(std::string name);
 };
+
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

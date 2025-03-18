@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 14:42:07 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/17 14:42:10 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/18 13:37:46 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/18 13:37:48 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include <sstream>
-# include "Contact.hpp"
-
-class PhoneBook
+// give all zombie the same name now, i want name with nbr
+Zombie* zombieHorde(int N, std::string name)
 {
-	private:
-		Contact	contactList[8];
-		int		_totalContacts;
-		int		_nextIndex;
+	Zombie* zombie = new Zombie[N];
 
-		void		_displayPhoneBook();
-		std::string	_displayFeild(const std::string &str);
-		int			_getIndex();
-
-	public:
-		PhoneBook();
-
-		void	addContacts();
-		void	searchContacts();
-};
-
-#endif
+	for (int i = 0; i < N; i++)
+		zombie[i].setZombieName(name);
+	return (zombie);
+}

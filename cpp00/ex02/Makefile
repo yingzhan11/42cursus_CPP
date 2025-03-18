@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/18 12:39:17 by yzhan             #+#    #+#              #
+#    Updated: 2025/03/18 12:39:20 by yzhan            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = account
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = tests.cpp Account.cpp
 

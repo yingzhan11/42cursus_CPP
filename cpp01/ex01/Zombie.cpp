@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 14:42:07 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/17 14:42:10 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/18 13:37:36 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/18 13:37:37 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include <sstream>
-# include "Contact.hpp"
+Zombie::Zombie(std::string name){
+	this->_name = name;
+}
 
-class PhoneBook
+Zombie::Zombie() : _name(""){}
+
+Zombie::~Zombie(){
+	std::cout << "Zombie " << this->_name << " be destroyed" << std::endl;
+}
+
+/**
+ * Public function
+ */
+void	Zombie::announce()
 {
-	private:
-		Contact	contactList[8];
-		int		_totalContacts;
-		int		_nextIndex;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-		void		_displayPhoneBook();
-		std::string	_displayFeild(const std::string &str);
-		int			_getIndex();
-
-	public:
-		PhoneBook();
-
-		void	addContacts();
-		void	searchContacts();
-};
-
-#endif
+void	Zombie::setZombieName(std::string name)
+{
+	this->_name = name;
+}

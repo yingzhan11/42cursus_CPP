@@ -21,7 +21,7 @@ int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
 /**
- * Constructor
+ * Constructor & Destructor
  */
 // Create and display accouts
 Account::Account(int initial_deposit)
@@ -36,26 +36,112 @@ Account::Account(int initial_deposit)
 	_totalAmount += _amount;
 	// Display account
 	_displayTimestamp();
-	std::cout << " index:" << _accountIndex << ";amout:" << _amount << ";created\n";
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";created\n";
+}
+
+Account::~Account()
+{
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";closed\n";
 }
 
 /**
  * Public functions
  */
-//makeDeposit
+// Display all accounts info
+void	Account::displayAccountsInfos()
+{
+	_displayTimestamp();
+	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount
+		<< ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+}
 
-//makeWithdrawal
+// Displaye the status of an account
+void	Account::displayStatus() const
+{
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount
+		<< ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
+}
 
-//checkAmount
+void	Account::makeDeposit(int deposit)
+{
+	int	pAmount = _amount;
 
-//displayStatus
+	_amount += deposit;
+	_nbDeposits++;
+	_totalNbDeposits++;
+	_totalAmount += deposit;
 
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";p_amount:" << pAmount
+		<< ";deposit:" << deposit << ";amount:" << _amount
+		<< ";nb_deposits:" << _nbDeposits << std::endl;
+}
+
+bool	Account::makeWithdrawal(int withdrawal)
+{
+	int pAmount = _amount;
+
+	if (withdrawal <= pAmount)
+	{
+		_amount -= withdrawal;
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		_totalAmount -= withdrawal;
+	}
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";p_amount:" << pAmount << ";withdrawal:";
+	if (withdrawal <= pAmount)
+	{
+		std::cout << withdrawal << ";amount:" << _amount
+			<< ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+		return (true);
+	}
+	else
+	{
+		std::cout << "refused\n";
+		return (false);
+	}
+}
+
+// Other functions
+int		Account::checkAmount() const
+{
+	return (_amount);
+}
+
+int	Account::getNbAccounts()
+{
+	return (_nbAccounts);
+}
+
+int	Account::getTotalAmount()
+{
+	return (_totalAmount);
+}
+
+int	Account::getNbDeposits()
+{
+	return (_totalNbDeposits);
+}
+int	Account::getNbWithdrawals()
+{
+	return (_totalNbWithdrawals);
+}
 
 /**
  * Private functions
  */
-//_displayTimestamp
+// Display the timeStamp
 void	Account::_displayTimestamp()
 {
+	// Get system time in seconds
 	std::time_t	currentTime = std::time(NULL);
+	// Convert system time to local time in (y,m,d,h,m,s format)
+	std::tm* localTime = std::localtime(&currentTime);
+	// Convert time to string and display it
+	char timeStr[100];
+	std::strftime(timeStr, sizeof(timeStr), "%Y%m%d_%H%M%S", localTime);
+	std::cout << "[" << timeStr << "]";
 }
