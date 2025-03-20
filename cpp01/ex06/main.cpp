@@ -5,30 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 13:35:55 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/18 13:35:57 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/20 15:11:53 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/20 15:11:54 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-//stack and heap
-int	main(void)
+int	main(int argc, char** argv)
 {
-	// test announce
-	Zombie zombieA("Azooo");
-	zombieA.announce();
+	if (argc != 2)
+	{
+		std::cout << "Wrong args. Please enter [./harlFilter <string>]\n";
+		return 1;
+	}
 
-	// test stack and destructor
-	randomChump("Bzooo");
-
-	// test heap
-	Zombie	*zombieC = newZombie("Czooo");
-	Zombie	*zombieD = newZombie("Dzooo");
-	zombieC->announce();
-	zombieD->announce();
-
-	delete(zombieC);
-	delete(zombieD);
+	Harl	harl;
+	harl.complain(argv[1]);
 	return 0;
 }

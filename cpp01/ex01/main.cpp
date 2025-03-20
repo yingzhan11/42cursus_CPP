@@ -18,7 +18,11 @@ int	main(void)
 	int	amount = 10;
 	
 	Zombie* zombie = zombieHorde(amount, "Azooo_");
-
+	if (!zombie)
+	{
+		std::cout << "No zombie here\n";
+		return 1;
+	}
 	for (int i = 0; i < amount; i++)
 	{
 		zombie[i].announce();

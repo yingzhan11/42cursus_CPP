@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 14:31:49 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/20 14:31:51 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/20 15:12:07 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/20 15:12:08 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,29 @@ void	Harl::complain( std::string level )
 
 	while (i < 4 && level != this->_level[i])
 		i++;
-	//std::cout << this->_level[i] << ": ";
-	(this->*_harlFunctions[i])();
+	int	j = i;
+	switch (i)
+	{
+		case 0:
+			while (j < 4)
+				(this->*_harlFunctions[j++])();
+			break;
+		case 1:
+			while (j < 4)
+				(this->*_harlFunctions[j++])();
+			break;
+		case 2:
+			while (j < 4)
+				(this->*_harlFunctions[j++])();
+			break;
+		case 3:
+			while (j < 4)
+				(this->*_harlFunctions[j++])();
+			break;
+		default:
+			(this->*_harlFunctions[j])();
+			break;
+	}
 }
 
 void	Harl::_debug(void)

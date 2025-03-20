@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 13:35:55 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/18 13:35:57 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/20 15:12:00 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/20 15:12:01 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-//stack and heap
-int	main(void)
+# include <string>
+# include <iostream>
+
+class Harl
 {
-	// test announce
-	Zombie zombieA("Azooo");
-	zombieA.announce();
+	private:
+		std::string	_level[5];
+		void	(Harl::*_harlFunctions[5])(void);
+		void	_debug(void);
+		void	_info(void);
+		void	_warning(void);
+		void	_error(void);
+		void	_other(void);
 
-	// test stack and destructor
-	randomChump("Bzooo");
+	public:
+		Harl(void);
+		~Harl(void);
 
-	// test heap
-	Zombie	*zombieC = newZombie("Czooo");
-	Zombie	*zombieD = newZombie("Dzooo");
-	zombieC->announce();
-	zombieD->announce();
+		void	complain( std::string level );
+};
 
-	delete(zombieC);
-	delete(zombieD);
-	return 0;
-}
+
+
+#endif
