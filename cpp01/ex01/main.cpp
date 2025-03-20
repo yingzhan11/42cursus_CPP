@@ -12,6 +12,7 @@
 
 #include "Zombie.hpp"
 
+//PTR and REF
 int	main(void)
 {
 	int	amount = 10;

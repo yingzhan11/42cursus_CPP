@@ -10,4 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "HumanB.hpp"
 
+HumanB::HumanB(std::string name)
+	: _name(name), _weapon(nullptr){}
+
+void	HumanB::setWeapon(Weapon& weapon)
+{
+	this->_weapon = &weapon;
+}
+
+void	HumanB::attack(void) const
+{
+	if (!this->_weapon)
+	{
+		std::cout << this->_name << " has no weapon to use" << std::endl;
+		return ;
+	}
+	std::cout << this->_name << " attack with " << this->_weapon->getType() << std::endl;
+}
