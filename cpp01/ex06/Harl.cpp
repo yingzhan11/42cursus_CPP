@@ -35,27 +35,20 @@ void	Harl::complain( std::string level )
 
 	while (i < 4 && level != this->_level[i])
 		i++;
-	int	j = i;
+	
 	switch (i)
 	{
 		case 0:
-			while (j < 4)
-				(this->*_harlFunctions[j++])();
-			break;
+			(this->*_harlFunctions[i++])();
 		case 1:
-			while (j < 4)
-				(this->*_harlFunctions[j++])();
-			break;
+			(this->*_harlFunctions[i++])();
 		case 2:
-			while (j < 4)
-				(this->*_harlFunctions[j++])();
-			break;
+			(this->*_harlFunctions[i++])();
 		case 3:
-			while (j < 4)
-				(this->*_harlFunctions[j++])();
+			(this->*_harlFunctions[i])();
 			break;
 		default:
-			(this->*_harlFunctions[j])();
+			(this->*_harlFunctions[i])();
 			break;
 	}
 }
