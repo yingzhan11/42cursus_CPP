@@ -20,7 +20,7 @@ int	main(void)
 	Zombie* zombie = zombieHorde(amount, "Azooo_");
 	if (!zombie)
 	{
-		std::cout << "No zombie here\n";
+		std::cout << "No zombie here" << std::endl;
 		return 1;
 	}
 	for (int i = 0; i < amount; i++)

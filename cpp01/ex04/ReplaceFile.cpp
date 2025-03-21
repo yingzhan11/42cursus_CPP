@@ -23,11 +23,16 @@ bool	ReplaceFile::replace()
 	std::string	newContent;
 	size_t		i = 0;
 
+	if (_s1 == "")
+	{
+		std::cout << "The s1 cannot be empty." << std::endl;
+		return false;
+	}
 	if (_readFile() == false)
 		return false;
 	if (this->_oriContent == "")
 	{
-		std::cout << "The infile is empty.\n";
+		std::cout << "The infile is empty." << std::endl;
 		return false;
 	}
 	while (1)
@@ -43,7 +48,7 @@ bool	ReplaceFile::replace()
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << "String length error: " << e.what() << '\n';
+			std::cerr << "String length error: " << e.what() << std::endl;
 			return false;
 		}
 		newContent += _s2;
@@ -56,7 +61,7 @@ bool	ReplaceFile::replace()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "String length error: " << e.what() << '\n';
+		std::cerr << "String length error: " << e.what() << std::endl;
 		return false;
 	}
 	// Write the copy&replaced content into outFile
@@ -75,7 +80,7 @@ bool ReplaceFile::_readFile()
 	std::ifstream	inFile(this->_filename);
 	if (!inFile)
 	{
-		std::cout << "Cannot open the infile\n";
+		std::cout << "Cannot open the infile" << std::endl;
 		return false;
 	}
 	// get content from file to a stringstream
@@ -90,7 +95,7 @@ bool ReplaceFile::_writeFile(const std::string& content)
 	std::ofstream	outFile(this->_filename + ".replace");
 	if (!outFile)
 	{
-		std::cout << "Cannot create the outfile\n";
+		std::cout << "Cannot create the outfile" << std::endl;
 		return false;
 	}
 	outFile << content;

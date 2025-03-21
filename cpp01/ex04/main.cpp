@@ -17,7 +17,7 @@ int	main(int argc, char** argv)
 {
 	if (argc != 4)
 	{
-		std::cout << "Wrong args. Please enter [./replace filename s1 s2]\n";
+		std::cout << "Wrong args. Please enter [./replace filename s1 s2]" << std::endl;
 		return 1;
 	}
 	std::string	filename = argv[1];

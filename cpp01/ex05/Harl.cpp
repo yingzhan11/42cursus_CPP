@@ -35,7 +35,6 @@ void	Harl::complain( std::string level )
 
 	while (i < 4 && level != this->_level[i])
 		i++;
-	//std::cout << this->_level[i] << ": ";
 	(this->*_harlFunctions[i])();
 }
 
