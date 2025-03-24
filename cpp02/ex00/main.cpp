@@ -12,13 +12,14 @@
 
 #include "Fixed.hpp"
 
-//fixed point number
+// Constructor, copy constructor and copy assignment operator
 int	main(void)
 {
 	Fixed a;
-	Fixed b( a );
-	Fixed c;
 
+	Fixed b( a );
+
+	Fixed c;
 	c = b;
 	
 	std::cout << a.getRawBits() << std::endl;

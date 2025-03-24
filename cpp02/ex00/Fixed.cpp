@@ -28,7 +28,7 @@ Fixed::Fixed(const Fixed& copy)
 	*this = copy;
 }
 
-// Copy assignment
+// Copy assignment operator
 Fixed& Fixed::operator=(const Fixed& copy)
 {
 	if (this != &copy)

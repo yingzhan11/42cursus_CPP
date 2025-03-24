@@ -18,27 +18,27 @@
 // Constructor
 Fixed::Fixed() : _value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 // Int copy constructor, to convert int to fixed point number, shifting the value left by fract_bits
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	this->_value = value << this->_fractionalBits;
 }
 
 // Float copy constructor, to convert float to fixed point number, value * 2^_fractionalBits
 Fixed::Fixed(const float value)
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	this->_value = roundf(value * (1 << this->_fractionalBits));
 }
 
 // Copy constructor
 Fixed::Fixed(const Fixed& copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
 
@@ -47,7 +47,7 @@ Fixed& Fixed::operator=(const Fixed& copy)
 {
 	if (this != &copy)
 	{
-		std::cout << "Copy assignment operator called" << std::endl;
+		//std::cout << "Copy assignment operator called" << std::endl;
 		this->_value = copy.getRawBits();
 	}
 	return (*this);
@@ -56,7 +56,7 @@ Fixed& Fixed::operator=(const Fixed& copy)
 // Destructor
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 /**
@@ -145,13 +145,13 @@ Fixed	Fixed::operator--(int)
  */
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	//std::cout << "setRawBits member function called" << std::endl;
 	this->_value = raw;
 }
 

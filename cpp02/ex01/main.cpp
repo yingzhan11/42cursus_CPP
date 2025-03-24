@@ -15,10 +15,15 @@
 int main( void )
 {
 	Fixed a;
+	// Int copy constructor
 	Fixed const b( 10 );
+	// Float copy constructor
 	Fixed const c( 42.42f );
+	// Copy constructor
 	Fixed const d( b );
+	// Copy assignment operator
 	a = Fixed( 1234.4321f );
+	
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

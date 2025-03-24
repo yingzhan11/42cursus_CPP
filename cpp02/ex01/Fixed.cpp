@@ -42,7 +42,7 @@ Fixed::Fixed(const Fixed& copy)
 	*this = copy;
 }
 
-// Copy assignment
+// Copy assignment operator
 Fixed& Fixed::operator=(const Fixed& copy)
 {
 	if (this != &copy)
@@ -64,13 +64,13 @@ Fixed::~Fixed()
  */
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	//std::cout << "setRawBits member function called" << std::endl;
 	this->_value = raw;
 }
 
