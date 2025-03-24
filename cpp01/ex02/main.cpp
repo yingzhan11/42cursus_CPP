@@ -52,7 +52,8 @@ int	main(void)
 	strREF = "ANOTHER BRAIN";
 	std::cout << "[ Change by REF ]\n";
 	std::cout << "strREF value: " << strREF << std::endl;
-	std::cout << "str value: " << str2 << std::endl;
+	std::cout << "str1 value: " << str1 << std::endl;
+	std::cout << "str2 value: " << str2 << std::endl;
 
 	return 0;
 }
