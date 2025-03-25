@@ -90,7 +90,7 @@ int	main(void)
 	//std::cout << "\n----------ClapTrapTest----------\n\n";
 	//ClapTrapTest();
 	//std::cout << "\n----------ScavTrapTest----------\n\n";
-	//ScavTrapTest();
+	ScavTrapTest();
 
 	std::cout << "\n----------FragTrapTest----------\n\n";
 	// Default constructor and constructor with name
