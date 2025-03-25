@@ -23,5 +23,10 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
+
+	//Fixed   e(8388607);
+    //Fixed   f(0.00390625f);
+    //Fixed   g(8388607.5f);
+    //Fixed   h(8388607.00390625f);
 	return 0;
 }
