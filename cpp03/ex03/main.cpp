@@ -40,7 +40,6 @@ void	constructorTest()
 
 int	main(void)
 {
-
 	std::cout << "\n----------DiamondTrapTest----------\n\n";
 	constructorTest();
 	
@@ -53,7 +52,7 @@ int	main(void)
 	Jerry.takeDamage(Tom.getAttackDamage());
 	Jerry.beRepaired(10);
 
-	// kill one
+	// Kill one
 	std::cout << "\n---Kill!---\n\n";
 	Jerry.setAttackDamage(200);
 	Jerry.attack("Tom");

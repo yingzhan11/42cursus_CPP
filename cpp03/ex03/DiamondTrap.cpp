@@ -21,17 +21,17 @@ DiamondTrap::DiamondTrap(): _name("defaultDiamond")
 	std::cout << "\033[36m" << "DiamondTrap default constructor called" << std::endl << "\033[0m";
 }
 
-DiamondTrap::DiamondTrap(const std::string& name): ClapTrap(name + "_clap_name"), _name(name)
+DiamondTrap::DiamondTrap(const std::string& name): ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name)
 {
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
-	std::cout << "\033[36m" << "DiamondTrap " << name << " constructor called" << std::endl << "\033[0m";
+	std::cout << "\033[36m" << "DiamondTrap " << this->_name << " constructor called" << std::endl << "\033[0m";
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& copy): ClapTrap(copy._name + "_clap_name"), _name(copy._name)
+DiamondTrap::DiamondTrap(const DiamondTrap& copy): ClapTrap(copy), ScavTrap(copy), FragTrap(copy), _name(copy._name)
 {
-	std::cout << "\033[36m" << "DiamondTrap copy constructor called" << std::endl << "\033[0m";
+	std::cout << "\033[36m" << "DiamondTrap " << this->_name << " copy constructor called" << std::endl << "\033[0m";
 }
 
 DiamondTrap::~DiamondTrap()
@@ -45,7 +45,7 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& copy)
 		return (*this);
 	this->_name = copy._name;
 	ClapTrap::operator=(copy);
-	std::cout << "\033[36m" << "DiamondTrap copy assignment operator called" << std::endl << "\033[0m";	
+	std::cout << "\033[36m" << "DiamondTrap " << this->_name << " copy assignment operator called" << std::endl << "\033[0m";	
 	return (*this);
 }
 
@@ -60,7 +60,7 @@ void	DiamondTrap::whoAmI()
 	std::cout << "Who Am I: \n";
 	std::cout << "* My own name is: " << this->_name << std::endl;
 	std::cout << "* My ClapTrap name is: " << ClapTrap::_name << std::endl;
-	std::cout << "* My hitPoints is: " << _hitPoints << std::endl;
-	std::cout << "* My energyPoints is: " << _energyPoints << std::endl;
-	std::cout << "* My attackDamage is: " << _attackDamage << std::endl;
+	std::cout << "* My hitPoints is: " << this->_hitPoints << std::endl;
+	std::cout << "* My energyPoints is: " << this->_energyPoints << std::endl;
+	std::cout << "* My attackDamage is: " << this->_attackDamage << std::endl;
 }
