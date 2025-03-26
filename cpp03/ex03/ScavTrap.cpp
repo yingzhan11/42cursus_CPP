@@ -30,7 +30,7 @@ ScavTrap::ScavTrap(const std::string& name): ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap& copy): ClapTrap(copy)
 {
-	std::cout << "\033[32m" << "ScavTrap " << copy._name << " copy constructor called" << std::endl << "\033[0m";
+	std::cout << "\033[32m" << "ScavTrap copy constructor called" << std::endl << "\033[0m";
 }
 
 ScavTrap::~ScavTrap()
@@ -43,7 +43,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& copy)
 	if (this == & copy)
 		return (*this);
 	ClapTrap::operator=(copy);
-	std::cout << "\033[32m" << "ScavTrap " << copy._name << " copy assignment operator called" << std::endl << "\033[0m";	
+	std::cout << "\033[32m" << "ScavTrap copy assignment operator called" << std::endl << "\033[0m";	
 	return (*this);
 }
 

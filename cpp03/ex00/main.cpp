@@ -15,15 +15,15 @@
 int	main(void)
 {
 	// Default constructor and constructor with name
+	std::cout << "\n---Constructor---\n\n";
 	ClapTrap	Hero0;
 	ClapTrap	Hero1("Hero1");
 	// Copy constructor and copy assignment operator
-	ClapTrap	copyHero0(Hero0);
-	ClapTrap	copyHero1(Hero1);
+	ClapTrap	copyHero(Hero1);
 	Hero0 = Hero1;
 
 	// Test attack
-	std::cout << "[ Attack! ]\n";
+	std::cout << "\n----------Attack!----------\n\n";
 	ClapTrap	Tom("Tom");
 	ClapTrap	Jerry("Jerry");
 	Tom.attack("Jerry");
@@ -35,14 +35,15 @@ int	main(void)
 	Jerry.beRepaired(10);
 
 	// kill one
-	std::cout << "[ Kill! ]\n";
+	std::cout << "\n----------Kill!----------\n\n";
 	Jerry.setAttackDamage(20);
 	Jerry.attack("Tom");
 	Tom.takeDamage(Jerry.getAttackDamage());
 	Tom.beRepaired(10);
 	Jerry.attack("Tom");
-	Tom.takeDamage(10);
-	std::cout << "[ Done ]\n";
+	Tom.takeDamage(Jerry.getAttackDamage());
+	
+	std::cout << "\n----------Done----------\n\n";
 
 	return 0;
 }

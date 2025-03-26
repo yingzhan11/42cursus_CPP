@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 14:19:14 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/25 14:19:15 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/26 09:58:40 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/26 09:58:42 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class FragTrap: virtual public ClapTrap
+class DiamondTrap: public ScavTrap, public FragTrap
 {
-	public:
-		FragTrap();
-		FragTrap(const std::string& name);
-		FragTrap(const FragTrap& copy);
-		~FragTrap();
-		FragTrap& operator=(const FragTrap& copy);
-		
-		void	highFivesGuys();
-};
+	private:
+		std::string	_name;
 
+	public:
+		DiamondTrap();
+		DiamondTrap(const std::string& name);
+		DiamondTrap(const DiamondTrap& copy);
+		~DiamondTrap();
+		DiamondTrap& operator=(const DiamondTrap& copy);
+
+		void	attack(const std::string& target) override;
+		//using ScavTrap::attack;
+		void	whoAmI();
+};
 
 

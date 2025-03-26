@@ -27,7 +27,7 @@ _attackDamage(0)
 ClapTrap::ClapTrap(const ClapTrap& copy): _name(copy._name), _hitPoints(copy._hitPoints),
 _energyPoints(copy._energyPoints), _attackDamage(copy._attackDamage)
 {
-	std::cout << "\033[34m" << "ClapTrap " << copy._name << " copy constructor called" << std::endl << "\033[0m";
+	std::cout << "\033[34m" << "ClapTrap copy constructor called" << std::endl << "\033[0m";
 }
 
 ClapTrap::~ClapTrap()
@@ -43,7 +43,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& copy)
 	_hitPoints = copy._hitPoints;
 	_energyPoints = copy._energyPoints;
 	_attackDamage = copy._attackDamage;
-	std::cout << "\033[34m" << "ClapTrap " << copy._name << " copy assignment operator called" << std::endl << "\033[0m";
+	std::cout << "\033[34m" << "ClapTrap copy assignment operator called" << std::endl << "\033[0m";
 	return (*this);
 }
 
@@ -96,7 +96,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 unsigned int ClapTrap::getAttackDamage(void) const
 {
-	std::cout << "\033[33m" << "ClapTrap get " << this->_name << " damage amout." << std::endl << "\033[0m";
+	std::cout << "\033[33m" << "ClapTrap get " << this->_name << "'s damage amout." << std::endl << "\033[0m";
 	return (this->_attackDamage);
 }
 
