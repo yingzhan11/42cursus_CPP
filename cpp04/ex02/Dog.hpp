@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 17:03:14 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/26 17:03:15 by yzhan            ###   ########.fr       */
+/*   Created: 2025/03/26 16:12:17 by yzhan             #+#    #+#             */
+/*   Updated: 2025/03/26 16:12:19 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <string>
-#include <iostream>
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-#define WHITE "\033[0m"
-#define CYAN "\033[36m"
+#define GREEN "\033[32m"
 
-class WrongAnimal
+class Dog: public AAnimal
 {
-	protected:
-		std::string	_type;
-
+	private:
+		Brain* _brain;
+		
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& copy);
-		virtual ~WrongAnimal();
-		WrongAnimal& operator=(const WrongAnimal& copy);
+		Dog();
+		Dog(const Dog& copy);
+		~Dog() override;
+		Dog& operator=(const Dog& copy);
 
-		void	makeSound() const;
-		std::string	getType() const;
-		void	setType(const std::string newType);
+		void	makeSound() const override;
 };
-

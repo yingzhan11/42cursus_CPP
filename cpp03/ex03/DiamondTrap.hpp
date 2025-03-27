@@ -30,6 +30,7 @@ class DiamondTrap: public ScavTrap, public FragTrap
 		void	attack(const std::string& target) override;
 		//using ScavTrap::attack;
 		void	whoAmI();
+		void	printScavTrapValues();
 };
 
 

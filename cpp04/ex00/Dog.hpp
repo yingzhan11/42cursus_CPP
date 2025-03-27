@@ -20,9 +20,8 @@ class Dog: public Animal
 {
 	public:
 		Dog();
-		//Dog(const std::string& type);
 		Dog(const Dog& copy);
-		~Dog();
+		~Dog() override;
 		Dog& operator=(const Dog& copy);
 
 		void	makeSound() const override;

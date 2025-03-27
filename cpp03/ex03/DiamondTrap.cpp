@@ -45,6 +45,8 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& copy)
 		return (*this);
 	this->_name = copy._name;
 	ClapTrap::operator=(copy);
+	//ScavTrap::operator=(copy);
+	//FragTrap::operator=(copy);
 	std::cout << "\033[36m" << "DiamondTrap " << this->_name << " copy assignment operator called" << std::endl << "\033[0m";	
 	return (*this);
 }
@@ -63,4 +65,8 @@ void	DiamondTrap::whoAmI()
 	std::cout << "* My hitPoints is: " << this->_hitPoints << std::endl;
 	std::cout << "* My energyPoints is: " << this->_energyPoints << std::endl;
 	std::cout << "* My attackDamage is: " << this->_attackDamage << std::endl;
+}
+
+void DiamondTrap::printScavTrapValues() {
+    std::cout << "ScavTrap Energy Points: " << ScavTrap::_energyPoints << std::endl;
 }

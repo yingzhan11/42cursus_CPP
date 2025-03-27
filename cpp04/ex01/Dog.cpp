@@ -14,18 +14,22 @@
 
 Dog::Dog(): Animal()
 {
-	this->_type = "Dog";
 	std::cout << GREEN<< "Dog default constructor called" << std::endl << WHITE;
+	this->_type = "Dog";
+	this->_brain = new Brain();
 }
 
 Dog::Dog(const Dog& copy): Animal(copy)
 {
 	std::cout << GREEN << "Dog: " << this->_type << " copy constructor called" << std::endl << WHITE;
+	this->_brain = new Brain(*copy._brain);
 }
 
 Dog::~Dog()
 {
 	std::cout << GREEN << "Dog: " << this->_type << " destructor called" << std::endl << WHITE;
+	delete this->_brain;
+	this->_brain = nullptr;
 }
 
 Dog& Dog::operator=(const Dog& copy)
@@ -33,6 +37,12 @@ Dog& Dog::operator=(const Dog& copy)
 	if (this == & copy)
 		return (*this);
 	Animal::operator=(copy);
+	if (this->_brain != nullptr)
+	{
+		delete this->_brain;
+		this->_brain = nullptr;
+	}
+	this->_brain = new Brain(*copy._brain); // why here is pointer??
 	std::cout << GREEN << "Dog: " << this->_type << " copy assignment operator called" << std::endl << WHITE;
 	return (*this);
 }

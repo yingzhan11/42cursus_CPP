@@ -18,10 +18,11 @@ void	constructorTest()
 	std::cout << "\n---Default constructor---\n\n";
 	DiamondTrap	DiamondHero0;
 	DiamondHero0.whoAmI();
+	DiamondHero0.printScavTrapValues();
 	std::cout << "\n---Parameter constructor---\n\n";
 	DiamondTrap	DiamondHero1("Hero1");
 	DiamondHero1.whoAmI();
-
+	
 	// Copy constructor and copy assignment operator
 	//std::cout << "\n---Copy constructor & Copy assignment operator---\n\n";
 	//DiamondHero1.setAttackDamage(100);

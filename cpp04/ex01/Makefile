@@ -14,7 +14,7 @@ NAME = animal
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)

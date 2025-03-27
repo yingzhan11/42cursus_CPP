@@ -18,22 +18,53 @@
 
 int main()
 {
-	std::cout << "\n----------NormalTest----------\n\n";
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	const Animal* animal = nullptr;
+    const Animal* dog = nullptr;
+    const Animal* cat = nullptr;
+    const WrongAnimal* wrongAnimal = nullptr;
+    const WrongAnimal* wrongCat = nullptr;
 
-	std::cout << "\n----------WrongCatTest----------\n\n";
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* k = new WrongCat();
-	std::cout << k->getType() << " " << std::endl;
-	k->makeSound(); //will output the cat sound!
-	wrong->makeSound();
+	try
+	{
+		std::cout << "\n----------NormalTest----------\n\n";
+		animal = new Animal();
+		dog = new Dog();
+		cat = new Cat();
 
+		std::cout << dog->getType() << " " << std::endl;
+		std::cout << cat->getType() << " " << std::endl;
+		cat->makeSound();
+		dog->makeSound();
+		animal->makeSound();
+
+		delete dog;
+		delete cat;
+		delete animal;
+
+		std::cout << "\n----------WrongCatTest----------\n\n";
+		wrongAnimal = new WrongAnimal();
+		wrongCat = new WrongCat();
+
+		std::cout << wrongCat->getType() << " " << std::endl;
+		wrongCat->makeSound();
+		wrongAnimal->makeSound();
+
+		delete wrongCat;
+		delete wrongAnimal;
+		
+		std::cout << "\n----------Done----------\n\n";
+	}
+	catch(const std::bad_alloc& e)
+	{
+		std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+		delete dog;
+		delete cat;
+		delete animal;
+		delete wrongCat;
+		delete wrongAnimal;
+
+		return 1;
+	}
+	
 	return 0;
 }
