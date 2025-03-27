@@ -16,13 +16,24 @@ Cat::Cat(): Animal()
 {
 	std::cout << PURPLE << "Cat default constructor called" << std::endl << WHITE;
 	this->_type = "Cat";
-	this->_brain = new Brain();
+	try {
+    	this->_brain = new Brain();
+	} catch (const std::bad_alloc& e) {
+    	std::cerr << "Memory allocation failed for _brain: " << this->_type << e.what() << std::endl;
+	    exit(1);
+	}
 }
 
 Cat::Cat(const Cat& copy): Animal(copy)
 {
 	std::cout << PURPLE << "Cat: " << this->_type << " copy constructor called" << std::endl << WHITE;
-	this->_brain = new Brain(*copy._brain);
+	//this->_type = "Cat"; ?????
+	try {
+    	this->_brain = new Brain(*copy._brain);
+	} catch (const std::bad_alloc& e) {
+    	std::cerr << "Memory allocation failed for _brain: " << this->_type << e.what() << std::endl;
+	    exit(1);
+	}
 }
 
 Cat::~Cat()
@@ -42,7 +53,12 @@ Cat& Cat::operator=(const Cat& copy)
 		delete this->_brain;
 		this->_brain = nullptr;
 	}
-	this->_brain = new Brain(*copy._brain);
+	try {
+    	this->_brain = new Brain(*copy._brain);
+	} catch (const std::bad_alloc& e) {
+    	std::cerr << "Memory allocation failed for _brain: " << this->_type << e.what() << std::endl;
+	    exit(1);
+	}
 	std::cout << PURPLE << "Cat: " << this->_type << " copy assignment operator called" << std::endl << WHITE;
 	return (*this);
 }

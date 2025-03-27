@@ -20,34 +20,53 @@
 
 void	basicTest()
 {
-	std::cout << "\n----------NormalTest----------\n\n";
-	const Animal* animal = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-	std::cout << dog->getType() << " " << std::endl;
-	std::cout << cat->getType() << " " << std::endl;
-	dog->makeSound();
-	cat->makeSound();
-	animal->makeSound();
+	const Animal* animal = nullptr;
+    const Animal* dog = nullptr;
+    const Animal* cat = nullptr;
+    const WrongAnimal* wrongAnimal = nullptr;
+    const WrongAnimal* wrongCat = nullptr;
 
-	delete dog;
-	dog = nullptr;
-	delete cat;
-	cat = nullptr;
-	delete animal;
-	animal = nullptr;
+	try
+	{
+		std::cout << "\n----------NormalTest----------\n\n";
+		animal = new Animal();
+		dog = new Dog();
+		cat = new Cat();
 
-	std::cout << "\n----------WrongCatTest----------\n\n";
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
-	std::cout << wrongCat->getType() << " " << std::endl;
-	wrongCat->makeSound();
-	wrong->makeSound();
-	
-	delete wrongCat;
-	wrongCat = nullptr;
-	delete wrong;
-	wrong = nullptr;
+		std::cout << dog->getType() << " " << std::endl;
+		std::cout << cat->getType() << " " << std::endl;
+		cat->makeSound();
+		dog->makeSound();
+		animal->makeSound();
+
+		delete dog;
+		delete cat;
+		delete animal;
+
+		std::cout << "\n----------WrongCatTest----------\n\n";
+		wrongAnimal = new WrongAnimal();
+		wrongCat = new WrongCat();
+
+		std::cout << wrongCat->getType() << " " << std::endl;
+		wrongCat->makeSound();
+		wrongAnimal->makeSound();
+
+		delete wrongCat;
+		delete wrongAnimal;
+		
+		std::cout << "\n----------Done----------\n\n";
+	}
+	catch(const std::bad_alloc& e)
+	{
+		std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+		delete dog;
+		delete cat;
+		delete animal;
+		delete wrongCat;
+		delete wrongAnimal;
+
+		exit (1);
+	}
 }
 
 int main()
@@ -61,13 +80,19 @@ int main()
 	const Animal	*animal[AMOUNT];
 
 	std::cout << "\n---Constructor---\n\n";
-	for (int i = 0; i < AMOUNT; i++)
-	{
-		if (i < AMOUNT / 2)
-			animal[i] = new Dog();
-		else
-			animal[i] = new Cat();
+	try {
+		for (int i = 0; i < AMOUNT; i++)
+		{
+			if (i < AMOUNT / 2)
+				animal[i] = new Dog();
+			else
+				animal[i] = new Cat();
+		}
+	} catch (const std::bad_alloc& e) {
+		std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+		return 1;
 	}
+	
 	std::cout << "\n---Make sound---\n\n";
 	for (int i = 0; i < AMOUNT; i++)
 		animal[i]->makeSound();
