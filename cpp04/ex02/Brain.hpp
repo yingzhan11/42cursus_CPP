@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #pragma once
-
+//3233343536
 #include <string>
 #include <iostream>
 
@@ -31,5 +31,10 @@ class Brain
 
 		std::string getIdea(int i) const;
 		void	setIdea(int i, const std::string& newidea);
+
+		//test for alloc fail
+		//void*	operator new(std::size_t size);
 };
+
+
 

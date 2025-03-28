@@ -29,4 +29,5 @@ class Dog: public Animal
 		Dog& operator=(const Dog& copy);
 
 		void	makeSound() const override;
+		Brain*	getBrain() const;
 };

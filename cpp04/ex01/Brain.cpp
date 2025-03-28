@@ -43,7 +43,6 @@ Brain& Brain::operator=(const Brain& copy)
 
 std::string Brain::getIdea(int i) const
 {
-	//std::cout << GOLD << "Brain get idea from brain." << std::endl << WHITE;
 	if (i >= 0 && i < 100)
 		return (_ideas[i]);
 	else
@@ -52,7 +51,12 @@ std::string Brain::getIdea(int i) const
 
 void	Brain::setIdea(int i, const std::string& newidea)
 {
-	//std::cout << GOLD << "Brain set a newidea into brain." << std::endl << WHITE;
 	if (i >= 0 && i < 100)
 		_ideas[i] = newidea;
 }
+
+//void* Brain::operator new(std::size_t size)
+//{
+//	throw std::bad_alloc();
+//	(void)size;
+//}

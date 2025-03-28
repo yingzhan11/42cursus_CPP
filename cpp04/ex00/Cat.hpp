@@ -25,6 +25,7 @@ class Cat: public Animal
 		Cat& operator=(const Cat& copy);
 
 		void	makeSound() const override;
+		//void*	operator new(std::size_t size);
 };
 
 

@@ -29,8 +29,7 @@ class Cat: public Animal
 		Cat& operator=(const Cat& copy);
 
 		void	makeSound() const override;
-		Brain* getBrain() const;
-		
+		Brain*	getBrain() const;		
 };
 
 

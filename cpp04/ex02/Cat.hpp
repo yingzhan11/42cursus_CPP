@@ -12,12 +12,12 @@
 
 #pragma once
 
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
 
 #define PURPLE "\033[35m"
 
-class Cat: public AAnimal
+class Cat: public Animal
 {
 	private:
 		Brain*	_brain;
@@ -29,8 +29,7 @@ class Cat: public AAnimal
 		Cat& operator=(const Cat& copy);
 
 		void	makeSound() const override;
-		Brain* getBrain() const;
-		
+		Brain*	getBrain() const;		
 };
 
 

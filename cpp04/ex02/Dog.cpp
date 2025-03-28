@@ -12,37 +12,38 @@
 
 #include "Dog.hpp"
 
-Dog::Dog(): AAnimal()
+Dog::Dog(): Animal()
 {
 	std::cout << GREEN<< "Dog default constructor called" << std::endl << WHITE;
 	this->_type = "Dog";
 	this->_brain = new Brain();
 }
 
-Dog::Dog(const Dog& copy): AAnimal(copy)
+Dog::Dog(const Dog& copy): Animal(copy)
 {
 	std::cout << GREEN << "Dog: " << this->_type << " copy constructor called" << std::endl << WHITE;
 	this->_brain = new Brain(*copy._brain);
+	
 }
 
 Dog::~Dog()
 {
-	std::cout << GREEN << "Dog: " << this->_type << " destructor called" << std::endl << WHITE;
 	delete this->_brain;
 	this->_brain = nullptr;
+	std::cout << GREEN << "Dog: " << this->_type << " destructor called" << std::endl << WHITE;
 }
 
 Dog& Dog::operator=(const Dog& copy)
 {
 	if (this == & copy)
 		return (*this);
-	AAnimal::operator=(copy);
+	Animal::operator=(copy);
 	if (this->_brain != nullptr)
 	{
 		delete this->_brain;
 		this->_brain = nullptr;
 	}
-	this->_brain = new Brain(*copy._brain); // why here is pointer??
+	this->_brain = new Brain(*copy._brain);
 	std::cout << GREEN << "Dog: " << this->_type << " copy assignment operator called" << std::endl << WHITE;
 	return (*this);
 }
@@ -50,4 +51,12 @@ Dog& Dog::operator=(const Dog& copy)
 void	Dog::makeSound() const
 {
 	std::cout << GREEN << "Dog makes sound: wwwwww!!!!!!" << std::endl << WHITE;
+}
+
+Brain*	Dog::getBrain() const
+{
+	if (this->_brain != nullptr)
+		return (this->_brain);
+	else
+		return (nullptr);
 }
