@@ -40,19 +40,14 @@ AAnimal& AAnimal::operator=(const AAnimal& copy)
 /**
  * Public functions
  */
-void	AAnimal::makeSound() const
-{
-	std::cout << BLUE << "AAnimal makes sound: ......" << std::endl << WHITE;
-}
-
 std::string AAnimal::getType(void) const
 {
-	std::cout << BLUE << "AAnimal get type: " << this->_type << " from it's field." << std::endl << WHITE;
+	//std::cout << BLUE << "AAnimal get type: " << this->_type << " from it's field." << std::endl << WHITE;
 	return (this->_type);
 }
 
 void	AAnimal::setType(const std::string newType)
 {
-	std::cout << BLUE << "AAnimal set type: " << newType << " to it's type." << std::endl << WHITE;
+	//std::cout << BLUE << "AAnimal set type: " << newType << " to it's type." << std::endl << WHITE;
 	this->_type = newType;
 }

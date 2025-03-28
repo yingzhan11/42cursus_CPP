@@ -12,14 +12,14 @@
 
 #include "Dog.hpp"
 
-Dog::Dog(): Animal()
+Dog::Dog(): AAnimal()
 {
 	std::cout << GREEN<< "Dog default constructor called" << std::endl << WHITE;
 	this->_type = "Dog";
 	this->_brain = new Brain();
 }
 
-Dog::Dog(const Dog& copy): Animal(copy)
+Dog::Dog(const Dog& copy): AAnimal(copy)
 {
 	std::cout << GREEN << "Dog: " << this->_type << " copy constructor called" << std::endl << WHITE;
 	this->_brain = new Brain(*copy._brain);
@@ -37,7 +37,7 @@ Dog& Dog::operator=(const Dog& copy)
 {
 	if (this == & copy)
 		return (*this);
-	Animal::operator=(copy);
+	AAnimal::operator=(copy);
 	if (this->_brain != nullptr)
 	{
 		delete this->_brain;

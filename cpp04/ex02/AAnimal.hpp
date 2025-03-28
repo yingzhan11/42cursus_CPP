@@ -25,7 +25,6 @@ class AAnimal
 
 	public:
 		AAnimal();
-		//AAnimal(const std::string& type);
 		AAnimal(const AAnimal& copy);
 		virtual ~AAnimal();
 		AAnimal& operator=(const AAnimal& copy);

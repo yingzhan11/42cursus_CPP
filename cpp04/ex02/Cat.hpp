@@ -12,12 +12,12 @@
 
 #pragma once
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 #define PURPLE "\033[35m"
 
-class Cat: public Animal
+class Cat: public AAnimal
 {
 	private:
 		Brain*	_brain;
