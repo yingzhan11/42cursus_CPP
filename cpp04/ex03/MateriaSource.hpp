@@ -29,4 +29,6 @@ class MateriaSource: public IMateriaSource
 
 		void learnMateria(AMateria* m) override;
 		AMateria* createMateria(std::string const & type) override;
+		
+		void printMateria() override;
 };

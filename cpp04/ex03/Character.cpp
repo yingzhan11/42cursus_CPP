@@ -37,7 +37,10 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i] != nullptr)
+		{
 			delete this->_inventory[i];
+			this->_inventory[i] = nullptr;
+		}
 	}
 }
 
@@ -79,26 +82,51 @@ void Character::equip(AMateria* m)
 			return ;
 		}
 	}
+	if (m != nullptr)
+	{
+		delete m;
+		m = nullptr;
+	}
 }
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
 		return ;
-	else if (this->_inventory[idx] == nullptr)
+	if (this->_inventory[idx] == nullptr)
 		return ;
 	else
+	{
+		delete this->_inventory[idx];
 		this->_inventory[idx] = nullptr;
+	}
 }
 void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx > 3)
+	{
+		std::cout << "* Wrong index of inventory: [" << idx << "] *" << std::endl;
 		return ;
-	else if (this->_inventory[idx] != nullptr)
+	}
+	if (this->_inventory[idx] != nullptr)
 		this->_inventory[idx]->use(target);
+	else
+		std::cout << "* Character doesn't have an inventory in [" << idx << "] *" << std::endl;
 }
 
 AMateria	*Character::getInventory(int idx){
 	if (idx < 0 || idx > 3)
 		return (nullptr);
 	return (this->_inventory[idx]);
+}
+
+void Character::printCharacter()
+{
+	std::cout << "Character " << this->_name << " has inventors:" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] == nullptr)
+			std::cout << "[" << i << "]: empty" << std::endl;
+		else
+			std::cout << "[" << i << "]: " << this->_inventory[i]->getType() << std::endl;
+	}
 }

@@ -33,7 +33,9 @@ class Character: public ICharacter
 		void unequip(int idx) override;
 		void use(int idx, ICharacter& target) override;
 		AMateria *getInventory(int idx);
-};
+
+		void printCharacter() override;
+	};
 
 
 

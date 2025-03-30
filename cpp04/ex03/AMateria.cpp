@@ -16,7 +16,7 @@ AMateria::AMateria(): _type("Empty"){}
 
 AMateria::AMateria(std::string const& type): _type(type){}
 
-AMateria::AMateria(const AMateria& copy): AMateria(copy._type){}
+AMateria::AMateria(const AMateria& copy): _type(copy._type){}
 
 AMateria::~AMateria(){}
 
@@ -35,5 +35,5 @@ const std::string&	AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "The character " << target.getName() << " use " << this->_type << " of AMateria." << std::endl; // what info put here????
+	std::cout << "The character " << target.getName() << " use " << this->_type << " of AMateria." << std::endl;
 }

@@ -76,23 +76,17 @@ MateriaSource& MateriaSource::operator = (const MateriaSource& copy)
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (m == nullptr)
+	if (!m)
 		return ;
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] == nullptr)
+		if (_inventory[i] == nullptr)
 		{
-			this->_inventory[i] = m;
+			_inventory[i] = m;
 			return ;
 		}
 	}
-	for (int i = 0; i < 4; i++)
-	{
-		if (_inventory[i] == m)
-			return ;
-	}
-	delete m;
-	m = nullptr;
+	
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -105,4 +99,17 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		}
 	}
 	return (nullptr);
+}
+
+void MateriaSource::printMateria()
+{
+	std::cout << "printMateria:" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] != nullptr)
+			std::cout << "inventory[" << i << "]: " << this->_inventory[i]->getType() << std::endl;
+		else
+			std::cout << "inventory[" << i << "]: empty" << std::endl;
+		
+	}
 }
