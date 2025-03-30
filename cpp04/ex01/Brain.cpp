@@ -54,9 +54,3 @@ void	Brain::setIdea(int i, const std::string& newidea)
 	if (i >= 0 && i < 100)
 		_ideas[i] = newidea;
 }
-
-//void* Brain::operator new(std::size_t size)
-//{
-//	throw std::bad_alloc();
-//	(void)size;
-//}

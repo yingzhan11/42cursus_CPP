@@ -41,9 +41,3 @@ void	Cat::makeSound() const
 {
 	std::cout << PURPLE << "Cat makes sound: mmmmmm~~~~~~" << std::endl << WHITE;
 }
-
-//void* Cat::operator new(std::size_t size)
-//{
-//	throw std::bad_alloc(); 
-//	(void)size;
-//}

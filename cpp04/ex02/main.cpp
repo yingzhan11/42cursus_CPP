@@ -19,56 +19,66 @@
 #define AMOUNT 8
 #define RED "\033[31m"
 
-int main()
+void	basicTest()
 {
-	//const AAnimal* AAnimal = nullptr;
+	// const AAnimal* Aanimal = nullptr;
     const AAnimal* dog = nullptr;
     const AAnimal* cat = nullptr;
     const WrongAnimal* wrongAnimal = nullptr;
     const WrongAnimal* wrongCat = nullptr;
 
+	std::cout << "\n----------NormalTest----------\n\n";
 	try
-	{
-		std::cout << "\n----------NormalTest----------\n\n";
-		//AAnimal = new AAnimal();
+	{    
+		// Aanimal = new AAnimal();
 		dog = new Dog();
 		cat = new Cat();
-
-		std::cout << dog->getType() << " " << std::endl;
-		std::cout << cat->getType() << " " << std::endl;
-		cat->makeSound();
-		dog->makeSound();
-		//AAnimal->makeSound();
-
-		delete dog;
-		delete cat;
-		//delete AAnimal;
-
-		std::cout << "\n----------WrongCatTest----------\n\n";
-		wrongAnimal = new WrongAnimal();
-		wrongCat = new WrongCat();
-
-		std::cout << wrongCat->getType() << " " << std::endl;
-		wrongCat->makeSound();
-		wrongAnimal->makeSound();
-
-		delete wrongCat;
-		delete wrongAnimal;
-		
-		std::cout << "\n----------Done----------\n\n";
 	}
 	catch(const std::bad_alloc& e)
 	{
 		std::cerr << RED << "Memory allocation failed: " << e.what() << std::endl << WHITE;
-		
 		delete dog;
 		delete cat;
-		//delete AAnimal;
+		return ;
+	}
+
+	std::cout << dog->getType() << " " << std::endl;
+	std::cout << cat->getType() << " " << std::endl;
+	cat->makeSound();
+	dog->makeSound();
+	std::cout << std::endl;
+
+	delete dog;
+	delete cat;
+
+	std::cout << "\n----------WrongCatTest----------\n\n";
+	try
+	{    
+		wrongAnimal = new WrongAnimal();
+		wrongCat = new WrongCat();
+	}
+	catch(const std::bad_alloc& e)
+	{
+		std::cerr << RED << "Memory allocation failed: " << e.what() << std::endl << WHITE;
 		delete wrongCat;
 		delete wrongAnimal;
-
-		return 1;
+		return ;
 	}
+	
+	std::cout << wrongCat->getType() << " " << std::endl;
+	wrongCat->makeSound();
+	wrongAnimal->makeSound();
+	std::cout << std::endl;
+
+	delete wrongCat;
+	delete wrongAnimal;
+}
+
+
+int main()
+{
+	std::cout << "\n----------BasicTest----------\n\n";
+	basicTest();
 
 	std::cout << "\n----------AnimalArrayTest----------\n\n";
 	std::cout << "\n---Constructor---\n\n";
