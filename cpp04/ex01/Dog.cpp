@@ -23,7 +23,6 @@ Dog::Dog(const Dog& copy): Animal(copy)
 {
 	std::cout << GREEN << "Dog: " << this->_type << " copy constructor called" << std::endl << WHITE;
 	this->_brain = new Brain(*copy._brain);
-	
 }
 
 Dog::~Dog()

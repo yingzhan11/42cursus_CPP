@@ -19,7 +19,7 @@ class Cure: public AMateria
 	public:
 		Cure();
 		Cure(const Cure& copy);
-		~Cure();
+		~Cure() override;
 
 		Cure& operator = (const Cure& copy);
 

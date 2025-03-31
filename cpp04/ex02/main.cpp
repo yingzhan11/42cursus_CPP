@@ -21,7 +21,7 @@
 
 void	basicTest()
 {
-	// const AAnimal* Aanimal = nullptr;
+	//const AAnimal* Aanimal = nullptr;
     const AAnimal* dog = nullptr;
     const AAnimal* cat = nullptr;
     const WrongAnimal* wrongAnimal = nullptr;
@@ -30,7 +30,7 @@ void	basicTest()
 	std::cout << "\n----------NormalTest----------\n\n";
 	try
 	{    
-		// Aanimal = new AAnimal();
+		//Aanimal = new AAnimal();
 		dog = new Dog();
 		cat = new Cat();
 	}
@@ -87,26 +87,28 @@ int main()
 	try {
 		for (; i < AMOUNT; i++)
 		{
+			animal[i] = nullptr;
 			if (i < AMOUNT / 2)
 				animal[i] = new Dog();
 			else
 				animal[i] = new Cat();
 		}
-		std::cout << "\n---Make sound---\n\n";
-		for (int i = 0; i < AMOUNT; i++)
-			animal[i]->makeSound();
-		
-		std::cout << "\n---Destructor---\n\n";
-		for (int i = 0; i < AMOUNT; i++)
-			delete animal[i];
-		std::cout << "\n----------Done----------\n\n";
-	} catch (const std::bad_alloc& e) {
+	}
+	catch (const std::bad_alloc& e)
+	{
 		std::cerr << RED << "Memory allocation failed: " << e.what() << std::endl << WHITE;
-		//std::cout << i << std::endl;
-		for (int j = 0; j < i -1; j--)
+		for (int j = 0; j <= i; j++)
 			delete animal[j];
 		return 1;
 	}
+
+	std::cout << "\n---Make sound---\n\n";
+	for (int j = 0; j < AMOUNT; j++)
+		animal[j]->makeSound();
+		
+	std::cout << "\n---Destructor---\n\n";
+	for (int j = 0; j < AMOUNT; j++)
+		delete animal[j];
 	
 	return 0;
 }

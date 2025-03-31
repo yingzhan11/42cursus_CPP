@@ -28,7 +28,7 @@ MateriaSource::MateriaSource(const MateriaSource& copy)
 			this->_inventory[i] = copy._inventory[i]->clone();
 	}
 }
-//??????????
+
 MateriaSource::~MateriaSource()
 {
 	void*	freeObjects[4] = {nullptr};
@@ -86,7 +86,6 @@ void MateriaSource::learnMateria(AMateria* m)
 			return ;
 		}
 	}
-	
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -110,6 +109,5 @@ void MateriaSource::printMateria()
 			std::cout << "inventory[" << i << "]: " << this->_inventory[i]->getType() << std::endl;
 		else
 			std::cout << "inventory[" << i << "]: empty" << std::endl;
-		
 	}
 }

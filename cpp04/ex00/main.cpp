@@ -33,7 +33,7 @@ int main()
 		animal = new Animal();
 		dog = new Dog();
 		cat = new Cat();
-		// throw std::bad_alloc();
+		//throw std::bad_alloc();
 	}
 	catch(const std::bad_alloc& e)
 	{
@@ -59,7 +59,6 @@ int main()
 	try
 	{    
 		wrongAnimal = new WrongAnimal();
-		// throw std::bad_alloc();
 		wrongCat = new WrongCat();
 	}
 	catch(const std::bad_alloc& e)

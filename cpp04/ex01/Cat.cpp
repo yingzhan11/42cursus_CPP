@@ -16,14 +16,14 @@ Cat::Cat(): Animal()
 {
 	std::cout << PURPLE << "Cat default constructor called" << std::endl << WHITE;
 	this->_type = "Cat";
+	//throw std::bad_alloc();
 	this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat& copy): Animal(copy)
 {
 	std::cout << PURPLE << "Cat: " << this->_type << " copy constructor called" << std::endl << WHITE;
-    this->_brain = new Brain(*copy._brain);
-	
+	this->_brain = new Brain(*copy._brain);
 }
 
 Cat::~Cat()
@@ -43,7 +43,7 @@ Cat& Cat::operator=(const Cat& copy)
 		delete this->_brain;
 		this->_brain = nullptr;
 	}
-    this->_brain = new Brain(*copy._brain);
+	this->_brain = new Brain(*copy._brain);
 	std::cout << PURPLE << "Cat: " << this->_type << " copy assignment operator called" << std::endl << WHITE;
 	return (*this);
 }

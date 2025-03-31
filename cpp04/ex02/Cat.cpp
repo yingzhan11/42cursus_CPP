@@ -16,6 +16,7 @@ Cat::Cat(): AAnimal()
 {
 	std::cout << PURPLE << "Cat default constructor called" << std::endl << WHITE;
 	this->_type = "Cat";
+	//throw std::bad_alloc();
 	this->_brain = new Brain();
 }
 

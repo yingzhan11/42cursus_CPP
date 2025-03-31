@@ -32,8 +32,8 @@ void	basicTest()
 	{    
 		animal = new Animal();
 		dog = new Dog();
+		//throw std::bad_alloc();
 		cat = new Cat();
-		// throw std::bad_alloc();
 	}
 	catch(const std::bad_alloc& e)
 	{
@@ -59,7 +59,6 @@ void	basicTest()
 	try
 	{    
 		wrongAnimal = new WrongAnimal();
-		// throw std::bad_alloc();
 		wrongCat = new WrongCat();
 	}
 	catch(const std::bad_alloc& e)
@@ -85,45 +84,44 @@ int main()
 	//std::cout << "\n----------BasicTest----------\n\n";
 	//basicTest();
 	
-	// std::cout << "\n----------AnimalArrayTest----------\n\n";
-	// std::cout << "\n---Constructor---\n\n";
-	// const Animal	*animal[AMOUNT];
-	// int i = 0;
-	// try {
-	// 	for (; i < AMOUNT; i++)
-	// 	{
-	// 		if (i < AMOUNT / 2)
-	// 			animal[i] = new Dog();
-	// 		else
-	// 		{
-	// 			animal[i] = new Cat();
-	// 			// throw std::bad_alloc(); //not sure
-	// 		}
-	// 	}
+	std::cout << "\n----------AnimalArrayTest----------\n\n";
+	std::cout << "\n---Constructor---\n\n";
+	const Animal	*animal[AMOUNT];
+	int i = 0;
+	try {
+		for (; i < AMOUNT; i++)
+		{
+			animal[i] = nullptr;
+			if (i < AMOUNT / 2)
+				animal[i] = new Dog();
+			else
+			{
+				animal[i] = new Cat();
+				//throw std::bad_alloc();
+			}
+		}
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cerr << RED << "Memory allocation failed: " << e.what() << std::endl << WHITE;
+		for (int j = 0; j <= i; j++)
+			delete animal[j];
+		return 1;
+	}
 
-	// }
-	// catch (const std::bad_alloc& e)
-	// {
-	// 	std::cerr << RED << "Memory allocation failed: " << e.what() << std::endl << WHITE;
-	// 	for (int j = 0; j < i - 1; j++)  /////need to check in hive pc, wsl is diff with linux. in wsl, it should be j<AMOUNT
-	// 		delete animal[j];
-	// 	return 1;
-	// }
-
-	// std::cout << "\n---Make sound---\n\n";
-	// for (int i = 0; i < AMOUNT; i++)
-	// 	animal[i]->makeSound();
+	std::cout << "\n---Make sound---\n\n";
+	for (int j = 0; j < AMOUNT; j++)
+		animal[j]->makeSound();
 		
-	// std::cout << "\n---Destructor---\n\n";
-	// for (int i = 0; i < AMOUNT; i++)
-	// 	delete animal[i];
+	std::cout << "\n---Destructor---\n\n";
+	for (int j = 0; j < AMOUNT; j++)
+		delete animal[j];
 	
 	std::cout << "\n----------CatDeepCopyTest----------\n\n";
 	try {
 		std::cout << "\n---Copy---\n\n";
 		Cat	cat;
 		Cat	copyCat(cat);
-		// throw std::bad_alloc();
 		Cat	operatorCopyCat = cat;
 		std::cout << "\n---Default idea---\n\n";
 		std::cout << "cat brain idea[0]: " << cat.getBrain()->getIdea(0) << std::endl;

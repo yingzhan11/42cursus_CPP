@@ -19,7 +19,7 @@ class Ice: public AMateria
 	public:
 		Ice();
 		Ice(const Ice& copy);
-		~Ice();
+		~Ice() override;
 
 		Ice& operator = (const Ice& copy);
 
