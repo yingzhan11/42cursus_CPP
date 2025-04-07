@@ -14,11 +14,15 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
 		const std::string _name;
-		int	_grade;
+		bool	_isSigned;
+		const int	_gradeToSign;
+		const int	_gradeToExe;
 
 	public:
 		Form();
@@ -34,23 +38,28 @@ class Form
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 
-		void beSigned(const )
+		void beSigned(const Bureaucrat& bureau);
 
-		void increament();
-		void decreament();
+
 
 		class GradeTooHighException: public std::exception
 		{
+			private:
+				std::string _message;
 			public:
-				const char* what() const noexcept override;
+				GradeTooHighException(const std::string& msg);
+				virtual const char* what() const noexcept override;
 		};
 
 		class GradeTooLowException: public std::exception
 		{
+			private:
+				std::string _message;
 			public:
-				const char* what() const noexcept override;
+				GradeTooLowException(const std::string& mag);
+				virtual const char* what() const noexcept override; //why here need virtual, some people don't write as this
 		};
 };
 
-std::ostream& operator << (std::ostream& os, const Form& bure);
+std::ostream& operator << (std::ostream& os, const Form& form);
 

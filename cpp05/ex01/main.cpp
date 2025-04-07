@@ -11,41 +11,32 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+//#include "Form.hpp"
 
 int main()
 {
 	//std::cout << "\n----------Materia test----------\n\n";
 	std::cout << "\n---Default constructor---\n\n";
-	try{
-		Bureaucrat testA;
-		std::cout << testA << std::endl;
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	Form testA;
+	std::cout << testA << std::endl;
 
 	std::cout << "\n---Parameter constructor---\n\n";
-	try{
-		Bureaucrat testB("testB", 1);
-		std::cout << testB << std::endl;
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
-	try{
-		Bureaucrat testC("testB", 100);
-		std::cout << testC << std::endl;
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	Form testB("testB", 1, 150);
+	std::cout << testB << std::endl;
+	
+	Form testC("testC", 150, 1);
+	std::cout << testC << std::endl;
+	
 
 	std::cout << "\n---TooHigh parameter constructor---\n\n";
 	try{
-		Bureaucrat testHighA("testHigh", 0);
+		Form testHighA("testHighA", 0, 42);
 		std::cout << testHighA << std::endl;
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
 	try{
-		Bureaucrat testHighB("testHigh", -3);
+		Form testHighB("testHighB", 42, -3);
 		std::cout << testHighB << std::endl;
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
@@ -53,53 +44,39 @@ int main()
 
 	std::cout << "\n---TooLow parameter constructor---\n\n";
 	try{
-		Bureaucrat testLowA("testLow", 151);
+		Form testLowA("testLowA", 151, 42);
 		std::cout << testLowA << std::endl;
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
 	try{
-		Bureaucrat testLowB("testLow", 200);
+		Form testLowB("testLowB", 42, 200);
 		std::cout << testLowB << std::endl;
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---Increment constructor---\n\n";
-	try{
-		Bureaucrat testIn("testIn", 3);
-		std::cout << testIn << std::endl;
+	std::cout << "\n---Sign Test---\n\n";
+	Form formTest("FormTest", 24, 42);
+	std::cout << formTest << std::endl;
+	Bureaucrat	formA("A", 20);
+	Bureaucrat	formB("B", 24);
+	Bureaucrat	formC("C", 25);
+	Bureaucrat	formD("D", 42);
+	Bureaucrat	formE("E", 50);
 
-		testIn.increament();
-		std::cout << testIn << std::endl;
+	formA.signForm(formTest);
+	formB.signForm(formTest);
+	formC.signForm(formTest);
+	formD.signForm(formTest);
+	formE.signForm(formTest);
 
-		testIn.increament();
-		std::cout << testIn << std::endl;
+	formC.increament();
+	formC.signForm(formTest);
+	formB.decreament();
+	formB.signForm(formTest);
+	
 
-
-		testIn.increament();
-		std::cout << testIn << std::endl;
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "\n---Increment constructor---\n\n";
-	try{
-		Bureaucrat testDe("testDe", 148);
-		std::cout << testDe << std::endl;
-
-		testDe.decreament();
-		std::cout << testDe << std::endl;
-
-		testDe.decreament();
-		std::cout << testDe << std::endl;
-
-		testDe.decreament();
-		std::cout << testDe << std::endl;
-
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
 	std::cout << "\n----------Done----------\n\n";
 
 	return 0;
