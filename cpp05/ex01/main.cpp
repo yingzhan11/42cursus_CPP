@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-//#include "Form.hpp"
+#include "Form.hpp"
 
 int main()
 {
@@ -49,6 +49,7 @@ int main()
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
+	
 	try{
 		Form testLowB("testLowB", 42, 200);
 		std::cout << testLowB << std::endl;

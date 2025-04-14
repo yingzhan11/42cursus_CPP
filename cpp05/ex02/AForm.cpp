@@ -64,7 +64,7 @@ const std::string& AForm::getTarget() const
 void AForm::beSigned(const Bureaucrat& bureau)
 {
 	if (bureau.getGrade() > _gradeToSign)
-		throw GradeTooLowException("grade is too low to be signed");
+		throw GradeTooLowException("Grade is too low to sign");
 	else
 		_isSigned = true;
 }
@@ -108,6 +108,7 @@ std::ostream& operator << (std::ostream& os, const AForm& form)
 		<< "\nIs form signed: " << form.getIsSigned()
 		<< "\nGrade to sign: " << form.getGradeToSign()
 		<< "\nGrade to execute: " << form.getGradeToExecute()
+		<< "\nTarget: " << form.getTarget()
 		<< std::endl;
 	return (os);
 }
