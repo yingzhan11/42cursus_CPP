@@ -12,6 +12,9 @@
 
 #pragma once
 
+#include <string>
+#include <iostream>
+
 #include "ICharacter.hpp"
 
 class Character: public ICharacter

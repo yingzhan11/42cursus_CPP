@@ -12,6 +12,8 @@
 
 #pragma once
 
+#include <iostream>
+
 #include "AAnimal.hpp"
 #include "Brain.hpp"
 

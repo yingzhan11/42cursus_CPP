@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:07:31 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/25 13:07:32 by yzhan            ###   ########.fr       */
+/*   Created: 2025/04/14 10:53:11 by yzhan             #+#    #+#             */
+/*   Updated: 2025/04/14 10:53:13 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 #include <string>
 #include <iostream>
+#include "AForm.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap: virtual public ClapTrap
+class ShrubberyCreationForm : public AForm
 {
 	public:
-		ScavTrap();
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& copy);
-		~ScavTrap();
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(const std::string& target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& copy);
+		~ShrubberyCreationForm();
 
-		ScavTrap&	operator=(const ScavTrap& copy);
-		void	attack(const std::string& target) override;
-		void	guardGate();
+		ShrubberyCreationForm& operator = (const ShrubberyCreationForm& copy);
+
+		void executeForm() const override;
 };
-

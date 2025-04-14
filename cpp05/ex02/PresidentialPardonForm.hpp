@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:07:31 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/25 13:07:32 by yzhan            ###   ########.fr       */
+/*   Created: 2025/04/14 10:51:15 by yzhan             #+#    #+#             */
+/*   Updated: 2025/04/14 10:51:16 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 #include <string>
 #include <iostream>
+#include "AForm.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap: virtual public ClapTrap
+class PresidentialPardonForm : public AForm
 {
 	public:
-		ScavTrap();
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& copy);
-		~ScavTrap();
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& copy);
+		~PresidentialPardonForm();
 
-		ScavTrap&	operator=(const ScavTrap& copy);
-		void	attack(const std::string& target) override;
-		void	guardGate();
+		PresidentialPardonForm& operator = (const PresidentialPardonForm& copy);
+
+		void executeForm() const override;
 };
-

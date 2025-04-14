@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:07:31 by yzhan             #+#    #+#             */
-/*   Updated: 2025/03/25 13:07:32 by yzhan            ###   ########.fr       */
+/*   Created: 2025/04/14 10:51:46 by yzhan             #+#    #+#             */
+/*   Updated: 2025/04/14 10:51:48 by yzhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 #include <string>
 #include <iostream>
+#include <ctime>
+#include "AForm.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap: virtual public ClapTrap
+class RobotomyRequestForm : public AForm
 {
 	public:
-		ScavTrap();
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& copy);
-		~ScavTrap();
+		RobotomyRequestForm();
+		RobotomyRequestForm(const std::string& target);
+		RobotomyRequestForm(const RobotomyRequestForm& copy);
+		~RobotomyRequestForm();
 
-		ScavTrap&	operator=(const ScavTrap& copy);
-		void	attack(const std::string& target) override;
-		void	guardGate();
+		RobotomyRequestForm& operator = (const RobotomyRequestForm& copy);
+		
+		void executeForm() const override;
 };
-

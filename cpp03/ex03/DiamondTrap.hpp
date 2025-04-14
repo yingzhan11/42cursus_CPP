@@ -12,6 +12,9 @@
 
 #pragma once
 
+#include <string>
+#include <iostream>
+
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 

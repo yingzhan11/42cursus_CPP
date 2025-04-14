@@ -12,6 +12,8 @@
 
 #pragma once
 
+#include <iostream>
+
 #include "WrongAnimal.hpp"
 
 #define PURPLE "\033[35m"

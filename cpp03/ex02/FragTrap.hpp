@@ -12,6 +12,9 @@
 
 #pragma once
 
+#include <string>
+#include <iostream>
+
 #include "ClapTrap.hpp"
 
 class FragTrap: public ClapTrap

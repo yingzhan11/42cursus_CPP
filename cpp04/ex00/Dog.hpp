@@ -12,6 +12,8 @@
 
 #pragma once
 
+#include <iostream>
+
 #include "Animal.hpp"
 
 #define GREEN "\033[32m"
