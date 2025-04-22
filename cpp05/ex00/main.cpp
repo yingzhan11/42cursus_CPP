@@ -14,8 +14,8 @@
 
 int main()
 {
-	//std::cout << "\n----------Materia test----------\n\n";
-	std::cout << "\n---Default constructor---\n\n";
+	std::cout << "\n----------Test----------\n\n";
+	std::cout << "\n---Normal test of constructor---\n\n";
 	try{
 		Bureaucrat testA;
 		std::cout << testA << std::endl;
@@ -23,13 +23,13 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---Parameter constructor---\n\n";
 	try{
 		Bureaucrat testB("testB", 1);
 		std::cout << testB << std::endl;
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
+
 	try{
 		Bureaucrat testC("testB", 100);
 		std::cout << testC << std::endl;
@@ -37,7 +37,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---TooHigh parameter constructor---\n\n";
+	std::cout << "\n---TooHigh grade---\n\n";
 	try{
 		Bureaucrat testHighA("testHigh", 0);
 		std::cout << testHighA << std::endl;
@@ -51,7 +51,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---TooLow parameter constructor---\n\n";
+	std::cout << "\n---TooLow grade---\n\n";
 	try{
 		Bureaucrat testLowA("testLow", 151);
 		std::cout << testLowA << std::endl;
@@ -65,7 +65,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---Increment constructor---\n\n";
+	std::cout << "\n---Increment---\n\n";
 	try{
 		Bureaucrat testIn("testIn", 3);
 		std::cout << testIn << std::endl;
@@ -83,7 +83,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---Increment constructor---\n\n";
+	std::cout << "\n---Decrement---\n\n";
 	try{
 		Bureaucrat testDe("testDe", 148);
 		std::cout << testDe << std::endl;

@@ -31,112 +31,147 @@ int main()
 	std::cout << robot << std::endl;
 	std::cout << presi << std::endl;
 
-	std::cout << BLUE  << "\n----------Start Testing----------\n\n" << WHITE;
-	std::cout << BLUE  << "\n---Create Executors---\n\n" << WHITE;
-	Bureaucrat	boss("Boss", 5);
-	Bureaucrat	manager("Manager", 45);
-	Bureaucrat	worker("Workder", 137);
-	Bureaucrat	intern("intern", 149);
-
-	std::cout << boss << std::endl;
+	std::cout << BLUE << "\n----------Start Test----------\n\n" << WHITE;
+	std::cout << BLUE << "\n---Create Executors---\n\n" << WHITE;
+	Bureaucrat	manager("manager", 5);
+	Bureaucrat	intern("intern", 150);
 	std::cout << manager << std::endl;
-	std::cout << worker << std::endl;
 	std::cout << intern << std::endl;
 
-	std::cout << BLUE  << "\n----------Shrubbery Testing----------\n\n" << WHITE;
-	std::cout << BLUE  << "\n---Create ShrubberyCreationForm---\n\n" << WHITE;
+	std::cout << BLUE << "\n----------Shrubbery Test----------\n\n" << WHITE;
+	std::cout << BLUE << "\n---Create ShrubberyCreationForm---\n\n" << WHITE;
 	ShrubberyCreationForm shrubForm("shrubForm");
 	std::cout << shrubForm << std::endl;
 
-	std::cout << BLUE  << "\n---Lower Grade Executor---\n" << WHITE;
-	std::cout << BLUE  << "\n-Execute Unsigned Form-\n\n" << WHITE;
+	std::cout << BLUE << "\n---Execute Unsigned Form---\n" << WHITE;
 	try	{
-		shrubForm.execute(intern);
+		intern.executeForm(shrubForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.executeForm(shrubForm);
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << BLUE  << "\n-Sign the Form-\n\n" << WHITE;
+	std::cout << BLUE << "\n---Sign the Form---\n" << WHITE;
 	try	{
-		shrubForm.beSigned(intern);
+		intern.signForm(shrubForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.signForm(shrubForm);
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << BLUE  << "\n---Higher Grade Executor---\n" << WHITE;
-	std::cout << BLUE  << "\n-Execute Unsigned Form-\n\n" << WHITE;
+	std::cout << std::endl << shrubForm << std::endl;
+
+	std::cout << BLUE << "\n---Execute Signed Form---\n" << WHITE;
 	try	{
-		shrubForm.execute(boss);
+		intern.executeForm(shrubForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.executeForm(shrubForm);
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << BLUE  << "\n-Sign the Form-\n\n" << WHITE;
+	std::cout << BLUE << "\n----------Shrubbery Testing Done----------\n\n" << WHITE;
+
+	std::cout << BLUE << "\n----------Robotomy Testing----------\n\n" << WHITE;
+	std::cout << BLUE << "\n---Create RobotomyRequestForm---\n\n" << WHITE;
+	RobotomyRequestForm robotForm("robotForm");
+	std::cout << robotForm << std::endl;
+
+	std::cout << BLUE << "\n---Execute Unsigned Form---\n" << WHITE;
 	try	{
-		shrubForm.beSigned(boss);
+		intern.executeForm(robotForm);
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << shrubForm << std::endl;
+	try	{
+		manager.executeForm(robotForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << BLUE << "\n---Sign the Form---\n" << WHITE;
+	try	{
+		intern.signForm(robotForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.signForm(robotForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << std::endl << robotForm << std::endl;
+
+	std::cout << BLUE << "\n---Execute Signed Form---\n" << WHITE;
+	try	{
+		intern.executeForm(robotForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.executeForm(robotForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << BLUE << "\n----------Robotomy Testing Done----------\n\n" << WHITE;
+	
+	std::cout << BLUE << "\n----------President Testing----------\n\n" << WHITE;
+	std::cout << BLUE << "\n---Create PresidentialPardonForm---\n\n" << WHITE;
+	PresidentialPardonForm presiForm("presiForm");
+	std::cout << presiForm << std::endl;
+
+	std::cout << BLUE << "\n---Execute Unsigned Form---\n" << WHITE;
+	try	{
+		intern.executeForm(presiForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.executeForm(presiForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << BLUE << "\n---Sign the Form---\n" << WHITE;
+	try	{
+		intern.executeForm(presiForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.signForm(presiForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << std::endl << presiForm << std::endl;
 
 	std::cout << BLUE  << "\n---Execute Signed Form---\n" << WHITE;
-	std::cout << BLUE  << "\n-Higher Grade Executor-\n\n" << WHITE;
 	try	{
-		shrubForm.execute(boss);
+		intern.executeForm(presiForm);
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	try	{
+		manager.executeForm(presiForm);
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << BLUE  << "\n-Lower Grade Executor-\n\n" << WHITE;
-	try	{
-		shrubForm.execute(intern);
-	} catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
-	}
-	
-	std::cout << BLUE  << "\n----------Shrubbery Testing Done----------\n\n" << WHITE;
-
-	//std::cout << "\n----------Robotomy Testing----------\n\n";
-	//std::cout << "\n---Create RobotomyRequestForm---\n\n";
-	//RobotomyRequestForm robotForm("shrubForm");
-	//std::cout << robotForm << std::endl;
-
-	//std::cout << "\n---Execute Unsigned Form with higher grade executor---\n\n";
-	//try	{
-	//	robotForm.execute(boss);
-	//} catch(const std::exception& e) {
-	//	std::cerr << e.what() << '\n';
-	//}
-
-	//std::cout << "\n---Execute Unsigned Form with lower grade executor---\n\n";
-	//try	{
-	//	robotForm.execute(nobody);
-	//} catch(const std::exception& e) {
-	//	std::cerr << e.what() << '\n';
-	//}
-
-	//std::cout << "\n---Sign the Form---\n\n";
-	//robotForm.beSigned(boss);
-	//std::cout << robotForm << std::endl;
-
-	//std::cout << "\n---Execute Signed Form with higher grade executor---\n\n";
-	//try	{
-	//	robotForm.execute(boss);
-	//} catch(const std::exception& e) {
-	//	std::cerr << e.what() << '\n';
-	//}
-
-	//std::cout << "\n---Execute Signed Form with lower grade executor---\n\n";
-	//try	{
-	//	robotForm.execute(nobody);
-	//} catch(const std::exception& e) {
-	//	std::cerr << e.what() << '\n';
-	//}
-	
-	//std::cout << "\n----------Shrubbery Testing Done----------\n\n";
-
-	
-	
+	std::cout << BLUE  << "\n----------President Testing Done----------\n\n" << WHITE;
 
 	return 0;
 }

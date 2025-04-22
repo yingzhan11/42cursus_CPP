@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/31 15:27:46 by yzhan             #+#    #+#              #
-#    Updated: 2025/03/31 15:27:49 by yzhan            ###   ########.fr        #
+#    Created: 2025/04/14 10:49:22 by yzhan             #+#    #+#              #
+#    Updated: 2025/04/14 10:49:23 by yzhan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex03
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp Intern.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)

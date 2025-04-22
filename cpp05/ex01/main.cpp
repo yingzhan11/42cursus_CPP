@@ -15,20 +15,30 @@
 
 int main()
 {
-	//std::cout << "\n----------Materia test----------\n\n";
-	std::cout << "\n---Default constructor---\n\n";
-	Form testA;
-	std::cout << testA << std::endl;
-
-	std::cout << "\n---Parameter constructor---\n\n";
-	Form testB("testB", 1, 150);
-	std::cout << testB << std::endl;
+	std::cout << "\n----------Test----------\n\n";
+	std::cout << "\n---Normal test of constructor---\n\n";
+	try{
+		Form testA;
+		std::cout << testA << std::endl;
+	}catch (std::exception& e){
+		std::cout << e.what() << std::endl;
+	}
 	
-	Form testC("testC", 150, 1);
-	std::cout << testC << std::endl;
-	
+	try{
+		Form testB("testB", 1, 150);
+		std::cout << testB << std::endl;
+	}catch (std::exception& e){
+		std::cout << e.what() << std::endl;
+	}
 
-	std::cout << "\n---TooHigh parameter constructor---\n\n";
+	try{
+		Form testC("testC", 150, 1);
+		std::cout << testC << std::endl;
+	}catch (std::exception& e){
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << "\n---TooHigh grade---\n\n";
 	try{
 		Form testHighA("testHighA", 0, 42);
 		std::cout << testHighA << std::endl;
@@ -42,7 +52,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n---TooLow parameter constructor---\n\n";
+	std::cout << "\n---TooLow grade---\n\n";
 	try{
 		Form testLowA("testLowA", 151, 42);
 		std::cout << testLowA << std::endl;
@@ -60,23 +70,20 @@ int main()
 	std::cout << "\n---Sign Test---\n\n";
 	Form formTest("FormTest", 24, 42);
 	std::cout << formTest << std::endl;
-	Bureaucrat	formA("A", 20);
-	Bureaucrat	formB("B", 24);
-	Bureaucrat	formC("C", 25);
-	Bureaucrat	formD("D", 42);
-	Bureaucrat	formE("E", 50);
+	Bureaucrat	A("A", 20);
+	Bureaucrat	B("B", 24);
+	Bureaucrat	C("C", 25);
+	Bureaucrat	D("D", 24);
 
-	formA.signForm(formTest);
-	formB.signForm(formTest);
-	formC.signForm(formTest);
-	formD.signForm(formTest);
-	formE.signForm(formTest);
-
-	formC.increament();
-	formC.signForm(formTest);
-	formB.decreament();
-	formB.signForm(formTest);
-	
+	A.signForm(formTest);
+	B.signForm(formTest);
+	std::cout << std::endl;
+	C.signForm(formTest);
+	C.increament();
+	C.signForm(formTest);
+	std::cout << std::endl;
+	D.decreament();
+	D.signForm(formTest);
 
 	std::cout << "\n----------Done----------\n\n";
 

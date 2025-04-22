@@ -48,7 +48,7 @@ void ShrubberyCreationForm::executeThis() const
 	std::ofstream output((this->getTarget() + "_shrubbery").c_str());
 
 	if (!output)
-		throw std::runtime_error("Error: Couldn't open the file in Shrubbery class.");
+		throw std::runtime_error("Error: Couldn't open the file in Shrubbery class");
 	output << THE_TREE;
 	output.close();
 }

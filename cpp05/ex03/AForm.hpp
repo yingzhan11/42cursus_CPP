@@ -14,7 +14,11 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 #include "Bureaucrat.hpp"
+
+#define GREEN "\033[32m"
+#define WHITE "\033[0m"
 
 class Bureaucrat;
 

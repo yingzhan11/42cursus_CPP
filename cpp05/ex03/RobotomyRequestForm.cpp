@@ -32,13 +32,13 @@ RobotomyRequestForm& RobotomyRequestForm::operator = (const RobotomyRequestForm&
 
 void RobotomyRequestForm::executeThis() const
 {
-	std::cout << "Drilling noises: ZZZZ ZZZZZ ZZZZZZZ." << std::endl;
+	std::cout << "Drilling noises: ZZZZ ZZZZZ ZZZZZZZ" << std::endl;
 	
 	// get current time of program running, to set a seed for random number
 	std::srand(std::time(0));
 	bool isSuccess = std::rand() % 2;
 	if (isSuccess)
-		std::cout << this->getTarget() << " has been robotomized." << std::endl;
+		std::cout << this->getTarget() << " has been robotomized" << std::endl;
 	else
-		std::cout << this->getTarget() << " robotomy failed." << std::endl;
+		std::cout << this->getTarget() << " robotomy failed" << std::endl;
 }
