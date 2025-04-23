@@ -35,7 +35,7 @@ class AForm
 		AForm();
 		AForm(const std::string name, int gradeToSign, int gradeToExe, const std::string& target);
 		AForm(const AForm& copy);
-		~AForm();
+		virtual ~AForm();
 
 		AForm& operator = (const AForm& copy);
 

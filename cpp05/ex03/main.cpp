@@ -25,30 +25,55 @@ int main()
 	std::cout << BLUE << "\n----------Normal Test----------\n\n" << WHITE;
 	try	{
 		AForm* shrub = intern.makeForm("shrubbery", "shrubForm");
-		std::cout << *shrub << std::endl;
+		std::cout << std::endl << *shrub << std::endl;
 		delete shrub;
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 	
-	
-	// shrub->executeThis();
-	// AForm* robot = intern.makeForm("robotomy", "robotForm");
-	// robot->executeThis();
-	// AForm* presi = intern.makeForm("presidential", "presiForm");
-	// presi->executeThis();
+	try	{
+		AForm* robot = intern.makeForm("robotomy", "robotForm");
+		std::cout << std::endl << *robot << std::endl;
+		delete robot;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
 
-	// std::cout << BLUE << "\n----------Invalid Test----------\n\n" << WHITE;
-	// intern.makeForm("president", "presiForm");
-	// intern.makeForm("", "presiForm");
-	// AForm* wrong = intern.makeForm("president", "");
-	// wrong->executeThis();
-	// (void)wrong;
-	// delete wrong;
+	try	{
+		AForm* presi = intern.makeForm("presidential", "presiForm");
+		std::cout << std::endl << *presi << std::endl;
+		delete presi;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << BLUE << "\n----------Invalid Test----------\n\n" << WHITE;
+
+	try	{
+		AForm* invalidType = intern.makeForm("nothing", "presiForm");
+		std::cout << std::endl << *invalidType << std::endl;
+		delete invalidType;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	try	{
+		AForm* noType = intern.makeForm("", "presiForm");
+		std::cout << std::endl << *noType << std::endl;
+		delete noType;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
+	try	{
+		AForm* noTarget = intern.makeForm("presidential", "");
+		std::cout << std::endl << *noTarget<< std::endl;
+		delete noTarget;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+
 	std::cout << BLUE  << "\n----------Testing Done----------\n\n" << WHITE;
 
 	return 0;
 }
-
-//error on wsl
-// main.cpp:33:17: error: deleting object of abstract class type ‘AForm’ which has non-virtual destructor will cause undefined behavior [-Werror=delete-non-virtual-dtor]                                                   33 |                 delete shrub;                                                                             |                 ^~~~~~~~~~~~                                                                        cc1plus: all warnings being treated as errors  

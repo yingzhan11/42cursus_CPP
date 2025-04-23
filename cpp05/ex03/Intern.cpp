@@ -44,8 +44,9 @@ AForm* Intern::makeForm(const std::string& name, const std::string& target)
             return (formFunc[i](target));
         }
     }
-    std::cout << "Invalid form type, can't create that form\n";
-    return 0;
+    throw Intern::FormNotFoundException();
 }
 
-
+const char* Intern::FormNotFoundException::what() const noexcept {
+    return ("Invalid form type, can't create that form.");
+}

@@ -21,6 +21,12 @@ class Intern
         static AForm* makeShrubberyForm(const std::string& target);
         static AForm* makeRobotomyForm(const std::string& target);
         static AForm* makePresidentialForm(const std::string& target);
+
+		class	FormNotFoundException : public std::exception
+		{
+			public:
+				virtual const char* what() const noexcept override;
+		};
 };
 
 
