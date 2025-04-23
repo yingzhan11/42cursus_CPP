@@ -44,8 +44,11 @@ class AForm
 		void beSigned(const Bureaucrat& bureau);
 
 		const std::string& getTarget() const;
+		
+		//subject said we can modify the execute founction, but evaluation sheet said should override execute func
 		void execute(const Bureaucrat& executor) const;
 		virtual void executeThis() const = 0;
+
 
 
 		class GradeTooHighException: public std::exception
