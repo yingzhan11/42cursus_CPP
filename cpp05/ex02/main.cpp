@@ -33,7 +33,7 @@ int main()
 
 	std::cout << BLUE << "\n----------Start Test----------\n\n" << WHITE;
 	std::cout << BLUE << "\n---Create Executors---\n\n" << WHITE;
-	Bureaucrat	manager("manager", 5);
+	Bureaucrat	manager("manager", 5); // need try catch here
 	Bureaucrat	intern("intern", 150);
 	std::cout << manager << std::endl;
 	std::cout << intern << std::endl;
