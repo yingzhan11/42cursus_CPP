@@ -87,20 +87,21 @@ static int getType(const std::string &str)
 		return UNKNOWN;
 }
 
-void convertNumber(const std::string &str, int type)
+static void convertNumber(const std::string &str)
 {
 	try {
-		double value = std::stod(str); // throws on invalid or out-of-range
+		size_t idx;
+		double value = std::stod(str, &idx); // throws on invalid or out-of-range
+		if (idx != str.length()) {
+			throw std::invalid_argument("invalid input");
+		}
 
 		// toChar
-		if (value >= std::numeric_limits<char>::min() && value <= std::numeric_limits<char>::max())
+		if (value >= std::numeric_limits<unsigned char>::min() && value <= std::numeric_limits<unsigned char>::max())
 		{
 			if (isprint(static_cast<unsigned char>(value)))
 			{
-				if (type == INT || type == DOUBLE || type == FLOAT)
-					std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
-				//else
-				//	std::cout << "char: '" << static_cast<char>(value) << "f'" << std::endl;
+				std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 			}
 			else
 				std::cout << "char: Non displayable" << std::endl;
@@ -108,21 +109,20 @@ void convertNumber(const std::string &str, int type)
 		else
 			std::cout << "char: impossible" << std::endl;
 
-
-		// int
+		// toInt
 		if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max())
 			std::cout << "int: " << static_cast<int>(value) << std::endl;
 		else
 			std::cout << "int: impossible" << std::endl;
 
-		// float
+		// toFloat
 		if (value > std::numeric_limits<float>::max() || value < -std::numeric_limits<float>::max())
 			std::cout << "float: impossible" << std::endl;
 		else
 			std::cout << "float: " << std::fixed << std::setprecision(1)
 					  << static_cast<float>(value) << "f" << std::endl;
 
-		// double
+		// toDouble
 		std::cout << "double: " << std::fixed << std::setprecision(1)
 				  << static_cast<double>(value) << std::endl;
 
@@ -174,6 +174,5 @@ void ScalarConverter::convert(const std::string &str)
 		std::cout << "double: impossible" << std::endl;
 	}
 	else
-		convertNumber(str, type);
-
+		convertNumber(str);
 }
