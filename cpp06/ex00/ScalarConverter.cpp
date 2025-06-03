@@ -33,7 +33,7 @@ static bool isFloat(const std::string &str)
 			return false;
 		i++;
 	}
-	return (dot == 1 && str[i] == 'f');
+	return (dot == 1 && (str[i] == 'f' || str[i] == 'F'));
 }
 
 static bool isDouble(const std::string &str)
@@ -85,14 +85,15 @@ static int getType(const std::string &str)
 		return UNKNOWN;
 }
 
-static void convertNumber(const std::string &str)
+static void convertNumber(const std::string &str, int type)
 {
 	try {
 		size_t idx;
 		double value = std::stod(str, &idx); // throws on invalid or out-of-range
-		if (idx != str.length()) {
+		if (type != FLOAT && idx != str.length())
 			throw std::invalid_argument("invalid input");
-		}
+		if(type == FLOAT && (idx != str.length() - 1))
+			throw std::invalid_argument("invalid input");
 
 		// toChar
 		if (value >= std::numeric_limits<unsigned char>::min() && value <= std::numeric_limits<unsigned char>::max())
@@ -172,5 +173,5 @@ void ScalarConverter::convert(const std::string &str)
 		std::cout << "double: impossible" << std::endl;
 	}
 	else
-		convertNumber(str);
+		convertNumber(str, type);
 }
