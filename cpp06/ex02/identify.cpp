@@ -19,6 +19,9 @@ Base* generate(void)
 	}
 }
 
+/**
+ * dynamic_cast: convert base class pointer or references to derived class ptr/ref (downcast) with checker
+ */
 void identify(Base* p)
 {
 	if (!p) {

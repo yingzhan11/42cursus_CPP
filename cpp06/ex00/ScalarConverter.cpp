@@ -1,7 +1,5 @@
 #include "ScalarConverter.hpp"
 
-// static
-
 static bool isChar(const std::string &str)
 {
 	return (str.length() == 1 && !std::isdigit(str[0]));
@@ -100,9 +98,7 @@ static void convertNumber(const std::string &str)
 		if (value >= std::numeric_limits<unsigned char>::min() && value <= std::numeric_limits<unsigned char>::max())
 		{
 			if (isprint(static_cast<unsigned char>(value)))
-			{
 				std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
-			}
 			else
 				std::cout << "char: Non displayable" << std::endl;
 		}
@@ -135,7 +131,9 @@ static void convertNumber(const std::string &str)
 	}
 }
 
-//public
+/**
+ * static_cast: use in conversion between fundamental types or when you know the pointer hierarchy
+ */
 void ScalarConverter::convert(const std::string &str)
 {
 	if (str.empty())
