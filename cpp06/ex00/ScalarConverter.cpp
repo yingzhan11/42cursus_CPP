@@ -97,10 +97,10 @@ void convertNumber(const std::string &str, int type)
 		{
 			if (isprint(static_cast<unsigned char>(value)))
 			{
-				if (type == INT || type == DOUBLE)
+				if (type == INT || type == DOUBLE || type == FLOAT)
 					std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
-				else
-					std::cout << "char: '" << static_cast<char>(value) << "f'" << std::endl;
+				//else
+				//	std::cout << "char: '" << static_cast<char>(value) << "f'" << std::endl;
 			}
 			else
 				std::cout << "char: Non displayable" << std::endl;
