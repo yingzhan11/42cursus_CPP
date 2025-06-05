@@ -2,7 +2,7 @@ NAME = base
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
 
-SRCS = main.cpp Base.cpp identify.cpp
+SRCS = main.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)

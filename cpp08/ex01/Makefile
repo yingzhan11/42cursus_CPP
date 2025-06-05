@@ -1,8 +1,8 @@
-NAME = base
+NAME = span
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS = -Wall -Wextra -Werror -std=c++17
 
-SRCS = main.cpp Base.cpp identify.cpp
+SRCS = main.cpp Span.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)
