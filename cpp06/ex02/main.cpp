@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/05 14:02:28 by yzhan             #+#    #+#             */
+/*   Updated: 2025/06/05 14:02:29 by yzhan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <ctime> //std::time
 #include "Base.hpp"
@@ -21,5 +33,6 @@ int main(void)
 		delete testBase;
 		testBase = nullptr;
 	}
-	return 0;
+	std::cout << BLUE  << "\n----------Testing Done----------\n\n" << WHITE;
+	return (0);
 }
