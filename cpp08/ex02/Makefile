@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = base
+NAME = mutantStack
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
 

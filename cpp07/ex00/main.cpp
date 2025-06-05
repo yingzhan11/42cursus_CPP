@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 14:03:52 by yzhan             #+#    #+#             */
-/*   Updated: 2025/06/05 14:03:54 by yzhan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "whatever.hpp"
 #include <iostream>
 
@@ -30,6 +18,11 @@ int	main(void) {
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min(c, d) = " << ::min( c, d ) << std::endl;
 	std::cout << "max(c, d) = " << ::max( c, d ) << std::endl;
-	
+
+	//::swap(a, d);
+	//std::cout << "a = " << a << ", d = " << d << std::endl;
+	//std::cout << "min(a, d) = " << ::min( a, d ) << std::endl;
+	//std::cout << "max(a, d) = " << ::max( a, d ) << std::endl;
+
 	return (0);
 }
