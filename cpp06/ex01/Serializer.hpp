@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-#include <cstdint> //uintptr_t
-#include "Data.hpp"
+# include <cstdint> //uintptr_t
+# include "Data.hpp"
 
 class Serializer {
 	private:
@@ -26,3 +27,5 @@ class Serializer {
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
 };
+
+#endif

@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#include "Form.hpp"
+# include "Form.hpp"
 
 class Form;
 
@@ -55,3 +56,5 @@ class Bureaucrat
 };
 
 std::ostream& operator << (std::ostream& os, const Bureaucrat& bureau);
+
+#endif

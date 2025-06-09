@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
+# include <iostream>
 
-#include "Animal.hpp"
+# include "Animal.hpp"
 
-#define PURPLE "\033[35m"
+# define PURPLE "\033[35m"
 
 class Cat: public Animal
 {
@@ -29,5 +30,5 @@ class Cat: public Animal
 		void	makeSound() const override;
 };
 
-
+#endif
 

@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#define WHITE "\033[0m"
-#define CYAN "\033[36m"
+# define WHITE "\033[0m"
+# define CYAN "\033[36m"
 
 class WrongAnimal
 {
@@ -34,3 +35,4 @@ class WrongAnimal
 		void	setType(const std::string newType);
 };
 
+#endif

@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include <iostream>
+# include <iostream>
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-#define GREEN "\033[32m"
+# define GREEN "\033[32m"
 
 class Dog: public Animal
 {
@@ -33,3 +34,5 @@ class Dog: public Animal
 		void	makeSound() const override;
 		Brain*	getBrain() const;
 };
+
+#endif

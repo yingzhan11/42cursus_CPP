@@ -34,16 +34,16 @@ int main(void) {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << BLUE << "\n----------span size <= 2----------\n\n" << WHITE;
+    std::cout << BLUE << "\n----------span size < 2----------\n\n" << WHITE;
     try {
-        Span spTest1 = Span(2);
+        Span spTest1 = Span(1);
         spTest1.addNumber(1);
         std::cout << spTest1.longestSpan() << std::endl;
     } catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << BLUE << "\n----------span size > 2 but only one number----------\n\n" << WHITE;
+    std::cout << BLUE << "\n----------span size >= 2 but only one number----------\n\n" << WHITE;
     try {
         Span spTest2 = Span(20);
         spTest2.addNumber(1);
@@ -52,7 +52,7 @@ int main(void) {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << BLUE << "\n----------span size > 2 && numbers.size >= 2----------\n\n" << WHITE;
+    std::cout << BLUE << "\n----------span size >= 2 && numbers.size >= 2----------\n\n" << WHITE;
     try {
         Span spTest3 = Span(25);
         spTest3.addNumber(1);

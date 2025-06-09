@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#include "ICharacter.hpp"
+# include "ICharacter.hpp"
 
 class Character: public ICharacter
 {
@@ -40,5 +41,5 @@ class Character: public ICharacter
 		void printCharacter() override;
 	};
 
-
+#endif
 

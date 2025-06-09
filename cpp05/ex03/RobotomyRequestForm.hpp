@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
-#include <string>
-#include <iostream>
-#include <ctime>
-#include "AForm.hpp"
+# include <string>
+# include <iostream>
+# include <ctime>
+# include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
 {
@@ -29,3 +30,5 @@ class RobotomyRequestForm : public AForm
 		
 		void executeThis() const override;
 };
+
+#endif

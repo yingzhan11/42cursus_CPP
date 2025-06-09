@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef ICE_HPP
+# define ICE_HPP
 
-#include <iostream>
-#include "AMateria.hpp"
+# include <iostream>
+# include "AMateria.hpp"
 
 class Ice: public AMateria
 {
@@ -27,3 +28,5 @@ class Ice: public AMateria
 		AMateria* clone() const override;
 		void use(ICharacter& target) override;
 };
+
+#endif

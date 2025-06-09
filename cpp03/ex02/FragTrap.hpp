@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#include "ClapTrap.hpp"
+# include "ClapTrap.hpp"
 
 class FragTrap: public ClapTrap
 {
@@ -29,5 +30,5 @@ class FragTrap: public ClapTrap
 		void	highFivesGuys();
 };
 
-
+#endif
 

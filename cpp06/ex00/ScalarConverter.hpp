@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
-#include <iostream>
-#include <string> //std::string
-#include <cctype> //std::isprint, std::isdigit
-#include <limits> //std::numeric_limits
-#include <iomanip> //std::setprecission
-#include <exception> //trycatch std::out_of_range
+# include <iostream>
+# include <string> //std::string
+# include <cctype> //std::isprint, std::isdigit
+# include <limits> //std::numeric_limits
+# include <iomanip> //std::setprecission
+# include <exception> //trycatch std::out_of_range
 
 enum e_type {
 	CHAR,
@@ -44,3 +45,5 @@ class ScalarConverter {
 	public:
 		static void convert(const std::string &str);
 };
+
+#endif

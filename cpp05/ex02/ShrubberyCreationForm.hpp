@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
-#include <string>
-#include <iostream>
-#include <fstream>
-#include "AForm.hpp"
+# include <string>
+# include <iostream>
+# include <fstream>
+# include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
 {
@@ -29,3 +30,5 @@ class ShrubberyCreationForm : public AForm
 
 		void executeThis() const override;
 };
+
+#endif

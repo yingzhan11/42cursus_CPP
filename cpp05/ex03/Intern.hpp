@@ -1,11 +1,24 @@
-#pragma once
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yzhan <yzhan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 14:30:19 by yzhan             #+#    #+#             */
+/*   Updated: 2025/06/09 14:30:20 by yzhan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <exception>
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#ifndef INTERN_HPP
+# define INTERN_HPP
+
+# include <string>
+# include <iostream>
+# include <exception>
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 class Intern
 {
@@ -29,4 +42,4 @@ class Intern
 		};
 };
 
-
+#endif

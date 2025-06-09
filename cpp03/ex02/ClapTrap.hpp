@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
 class ClapTrap
 {
@@ -38,5 +39,5 @@ class ClapTrap
 		void	setAttackDamage(const int damage);
 };
 
-
+#endif
 

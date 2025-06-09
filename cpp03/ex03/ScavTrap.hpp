@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#include "ClapTrap.hpp"
+# include "ClapTrap.hpp"
 
 class ScavTrap: virtual public ClapTrap
 {
@@ -29,4 +30,6 @@ class ScavTrap: virtual public ClapTrap
 		void	attack(const std::string& target) override;
 		void	guardGate();
 };
+
+#endif
 

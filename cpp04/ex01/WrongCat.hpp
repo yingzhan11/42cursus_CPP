@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include <iostream>
+# include <iostream>
 
-#include "WrongAnimal.hpp"
+# include "WrongAnimal.hpp"
 
-#define PURPLE "\033[35m"
+# define PURPLE "\033[35m"
 
 class WrongCat: public WrongAnimal
 {
@@ -28,3 +29,5 @@ class WrongCat: public WrongAnimal
 
 		void	makeSound() const;
 };
+
+#endif

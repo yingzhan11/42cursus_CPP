@@ -1,6 +1,7 @@
-#pragma once
+#ifndef ITER_HPP
+# define ITER_HPP
 
-#include <iostream>
+# include <iostream>
 
 template <typename T, typename Func>
 void    iter(T* array, size_t length, Func function) {
@@ -14,3 +15,5 @@ void    iter(T* array, size_t length, Func function) {
         function(array[i]);
     }
 }
+
+#endif

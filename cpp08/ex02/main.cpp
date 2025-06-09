@@ -3,6 +3,7 @@
 #include <list>
 
 #define BLUE "\033[34m"
+#define GOLD "\033[33m"
 #define WHITE "\033[0m"
 
 int main(void) {
@@ -66,28 +67,28 @@ int main(void) {
 		std::cout << *ite << std::endl;
 	}
 	
-	std::cout << BLUE << "\n---Compare with normal stack---\n\n" << WHITE;
+	std::cout << GOLD<< "\n---Compare with normal stack---\n\n" << WHITE;
 	std::stack<int> s(mstack);
 	while (!s.empty()) {
 		std::cout << s.top() << std::endl;
 		s.pop();
 	}
 
-	std::cout << BLUE << "\n----------Compare with list----------\n\n" << WHITE;
+	std::cout << GOLD << "\n----------Compare with list----------\n\n" << WHITE;
 	std::list<int> lst;
 
-	std::cout << BLUE << "\n---add two elements---\n\n" << WHITE;
+	std::cout << GOLD << "\n---add two elements---\n\n" << WHITE;
 	lst.push_back(5);
 	lst.push_back(17);
-	std::cout << BLUE  << "the top element is: " << WHITE << lst.back() << std::endl;
-	std::cout << BLUE  << "the list size is: " << WHITE << lst.size() << std::endl;
+	std::cout << GOLD  << "the top element is: " << WHITE << lst.back() << std::endl;
+	std::cout << GOLD  << "the list size is: " << WHITE << lst.size() << std::endl;
 
-	std::cout << BLUE << "\n---delete the top element---\n\n" << WHITE;
+	std::cout << GOLD << "\n---delete the top element---\n\n" << WHITE;
 	lst.pop_back();
-	std::cout << BLUE  << "the top element is: " << WHITE << lst.back() << std::endl;
-	std::cout << BLUE  << "the list size is: " << WHITE << lst.size() << std::endl;
+	std::cout << GOLD  << "the top element is: " << WHITE << lst.back() << std::endl;
+	std::cout << GOLD  << "the list size is: " << WHITE << lst.size() << std::endl;
 
-	std::cout << BLUE << "\n---add more elements and test iterator---\n\n" << WHITE;
+	std::cout << GOLD << "\n---add more elements and test iterator---\n\n" << WHITE;
 	lst.push_back(3);
 	lst.push_back(5);
 	lst.push_back(737);
@@ -96,34 +97,34 @@ int main(void) {
 	std::list<int>::iterator itLst = lst.begin();
 	std::list<int>::iterator iteLst = lst.end();
 
-	std::cout << BLUE  << "the itLst element is: " << WHITE;
+	std::cout << GOLD  << "the itLst element is: " << WHITE;
 	std::cout << *itLst << std::endl;
-	std::cout << BLUE  << "move down itLst: " << WHITE;
+	std::cout << GOLD  << "move down itLst: " << WHITE;
 	++itLst;
 	std::cout << *itLst << std::endl;
-	std::cout << BLUE  << "move up itLst: " << WHITE;
+	std::cout << GOLD  << "move up itLst: " << WHITE;
 	--itLst;
 	std::cout << *itLst << std::endl;
 
-	std::cout << BLUE  << "the iteLst element is: " << WHITE;
+	std::cout << GOLD  << "the iteLst element is: " << WHITE;
 	--iteLst;
 	std::cout << *iteLst << std::endl;
-	std::cout << BLUE  << "move up ite: " << WHITE;
+	std::cout << GOLD  << "move up ite: " << WHITE;
 	--iteLst;
 	std::cout << *iteLst << std::endl;
-	std::cout << BLUE  << "move down ite: " << WHITE;
+	std::cout << GOLD  << "move down ite: " << WHITE;
 	++iteLst;
 	std::cout << *iteLst << std::endl;
 	++iteLst;
 
-	std::cout << BLUE << "\n---print all elements with itLst---\n\n" << WHITE;
+	std::cout << GOLD << "\n---print all elements with itLst---\n\n" << WHITE;
 	while (itLst != iteLst)
 	{
 		std::cout << *itLst << std::endl;
 		++itLst;
 	}
 
-	std::cout << BLUE << "\n---print all elements with iteLst---\n\n" << WHITE;
+	std::cout << GOLD << "\n---print all elements with iteLst---\n\n" << WHITE;
 	itLst = lst.begin();
 	while (iteLst != itLst)
 	{

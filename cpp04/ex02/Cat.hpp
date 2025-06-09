@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
+# include <iostream>
 
-#include "AAnimal.hpp"
-#include "Brain.hpp"
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-#define PURPLE "\033[35m"
+# define PURPLE "\033[35m"
 
 class Cat: public AAnimal
 {
@@ -34,5 +35,5 @@ class Cat: public AAnimal
 		Brain*	getBrain() const;		
 };
 
-
+#endif
 

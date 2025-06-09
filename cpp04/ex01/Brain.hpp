@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
 
-#define WHITE "\033[0m"
-#define GOLD "\033[33m"
+# define WHITE "\033[0m"
+# define GOLD "\033[33m"
 
 class Brain
 {
@@ -33,5 +34,5 @@ class Brain
 		void	setIdea(int i, const std::string& newidea);
 };
 
-
+#endif
 

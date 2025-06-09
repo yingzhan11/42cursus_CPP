@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
-#include <string>
-#include "AMateria.hpp"
+# include <string>
+# include "AMateria.hpp"
 
 class IMateriaSource
 {
@@ -24,3 +25,5 @@ class IMateriaSource
 		
 		virtual void printMateria() = 0;
 };
+
+#endif

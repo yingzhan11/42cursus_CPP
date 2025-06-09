@@ -29,7 +29,7 @@ int main() {
             std::cout << testA[i] << " ";
 
         std::cout << BLUE << "\n\n---Copy Array---\n\n" << WHITE;
-        Array<int> testB = testA;
+        Array<int> testB(testA);
         testDefault = testB;
 
         std::cout << "testB use copy constructor to copy from testA" << std::endl;
