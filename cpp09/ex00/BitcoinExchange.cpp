@@ -18,63 +18,88 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
+/**
+ * Parsing Database file, get the date and rate value to container
+ */
 void BitcoinExchange::readDatabase(const std::string &filename)
 {
+    //check filename is .csv or not
+    if (filename.size() < 4 || filename.substr(filename.size() - 4) != ".csv")
+        throw std::invalid_argument("Wrong database: the filename should be '*.csv'");
     //open and read from file
     std::ifstream database(filename); //input file stream
-    if (!database.is_open()) {
-        throw std::runtime_error("Wrong file: could not open the file");
-    }
-    //drop first line
+    if (!database.is_open())
+        throw std::runtime_error("Wrong database: could not open the database file");
+    if (database.peek() == std::ifstream::traits_type::eof())
+        throw std::runtime_error("Wrong database: empty databse file");
+    
     std::string line;
+    // const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)$)");
+    const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)\s*$)");
+    //skip the first line
     std::getline(database, line);
     while (std::getline(database, line)) {
-        std::istringstream iss(line); //input string stream
-        std::string dateStr;
-        float rate;
-        //before , is date, reminder part is rate
-        if (std::getline(iss, dateStr, ',') && iss >> rate) {
+        if (line.empty())
+            throw std::runtime_error("Wrong database: the line is empty");
+        std::smatch result;
+        if (!std::regex_match(line, result, formatDB))
+            throw std::runtime_error("Wrong database: invalid format");
+        
+        std::string dateStr = result[1].str();
+        std::string rateStr = result[2].str();
+        if (dateStr.empty() || rateStr.empty())
+            throw std::runtime_error("Wrong database: empty data");
+        if (!isValidDate(dateStr, line) || !isValidValue(rateStr, line, 0))
+            throw std::runtime_error("Wrong database: invalid data");
+        //calculate result
+        try {
+            float rate = std::stof(rateStr);
             exchangeRates[dateStr] = rate;
+        } catch (const std::exception &e) {
+            std::cout << RED << e.what() << std::endl << WHITE;
         }
     }
+    database.close();
 }
 
+/**
+ * Parsing the inputfile, and calculate the btc rate
+ */
 void BitcoinExchange::processFile(const std::string &filename) const
 {
     std::ifstream file(filename);
-    if (!file.is_open()) {
+
+    //check file not open || empty
+    if (!file.is_open())
         throw std::runtime_error("Wrong file: could not open the file");
-    }
-    //check is empty file
     if (file.peek() == std::ifstream::traits_type::eof())
         throw std::runtime_error("Wrong file: input file is empty");
-    //read line and check validation
+
     std::string line;
+    //correct format of each line need to match
+    // const std::regex format(R"(^(\d{4}-\d{2}-\d{2}) \| (-?\d+(?:\.\d+)?)$)"); //Linux
+    const std::regex formatF(R"(^(\d{4}-\d{2}-\d{2}) \| (-?\d+(?:\.\d+)?)\s*$)"); //WSL
+    //skip the first line, then check other lines
     std::getline(file, line);
-    //first line
-    // if(line != "date | value")
-    //     throw std::runtime_error("Wrong line: wrong header line");
-    //data line
     while (std::getline(file, line)) {
         if (line.empty()) {
-            std::cout << "Wrong line: empty line" << std::endl;
+            std::cout << RED << "Wrong line: empty line" << std::endl << WHITE;
             continue ; //if line is empty, move the next line
         }
-        //find pipe in line
-        size_t pipe = line.find(" | ");
-        if (pipe == std::string::npos) {
-            std::cout << "Wrong line: no | >> " << line << std::endl;
-            continue ;
+        //match line to the format
+        std::smatch result;
+        if (!std::regex_match(line, result, formatF)) {
+            std::cout << RED << "Wrong line: invalid format >> " << line << std::endl << WHITE;
+            continue;
         }
-        //if pipe, divide the line to two part
-        std::string dateStr = line.substr(0, pipe);
-        std::string valueStr = line.substr(pipe + 3); //pipe length is 3
+        std::string dateStr = result[1].str();
+        std::string valueStr = result[2].str();
         //data validation check
         if (dateStr.empty() || valueStr.empty()) {
-            std::cout << "Wrong line: empty data >> " << line << std::endl;
+            std::cout << RED << "Wrong line: empty data >> " << line << std::endl << WHITE;
             continue ;
         }
-        if (!isValidDate(dateStr, line) || !isValidValue(valueStr, line))
+        if (!isValidDate(dateStr, line) || !isValidValue(valueStr, line, 1))
             continue ;
         //calculate result
         try {
@@ -83,24 +108,16 @@ void BitcoinExchange::processFile(const std::string &filename) const
             float result = rate * value;
             std::cout << dateStr << " => " << value << " = " << result << std::endl;
         } catch (const std::exception &e) {
-            std::cout << e.what() << std::endl;
+            std::cout << RED << e.what() << std::endl << WHITE;
         }
-        file.close();
     }
+    file.close();
 }
 
+/**
+ * Helper functions
+ */
 bool BitcoinExchange::isValidDate(const std::string &dateStr, const std::string &line) const {
-    //check the begin and end of data, cannot be spaces/tab/nl
-    if (dateStr.find_first_not_of(" \t\n\v\f\r") != 0
-        || dateStr.find_last_not_of(" \t\n\v\f\r") != dateStr.length() - 1)
-    {
-        std::cout << "Wrong date: extra space >> " << line << std::endl;
-        return false;
-    }
-    if (dateStr.length() != 10 || dateStr[4] != '-' || dateStr[10] != '-') {
-        std::cout << "Wrong date: wrong format >> " << line << std::endl;
-        return false;
-    }
     //get year, month and day value
     int year, month, day;
     try {
@@ -108,7 +125,7 @@ bool BitcoinExchange::isValidDate(const std::string &dateStr, const std::string 
         month = std::stoi(dateStr.substr(5, 2));
         day = std::stoi(dateStr.substr(8, 2));
     } catch (const std::exception &) {
-        std::cout << "Wrong date: cannot do stoi >> " << line << std::endl;
+        std::cout << RED << "Wrong date: cannot do stoi >> " << line << std::endl << WHITE;
         return false;
     }
     //check year, month and day value
@@ -117,26 +134,30 @@ bool BitcoinExchange::isValidDate(const std::string &dateStr, const std::string 
         lastDay[1] = 29;
     if (year >= 1 && month >= 1 && month <= 12 && day >= 1 && day <= lastDay[month - 1])
         return true;
-    std::cout << "Wrong date: wrong year/month/day >> " << line << std::endl;
+    std::cout << RED << "Wrong date: wrong year/month/day >> " << line << std::endl << WHITE;
     return false;
 }
 
-bool BitcoinExchange::isValidValue(const std::string &valueStr, const std::string &line) const {
-    //check the begin and end of data, cannot be spaces/tab/nl
-    if (valueStr.find_first_not_of(" \t\n\v\f\r") != 0
-        || valueStr.find_last_not_of (" \t\n\v\f\r") != valueStr.length() - 1)
-    {
-        std::cout << "Wrong value: extra space >> " << line << std::endl;
-        return false;
-    }
-    std::istringstream iss(valueStr);
+bool BitcoinExchange::isValidValue(const std::string &valueStr, const std::string &line, const bool isLimited) const {
+
     float value;
-    if (!(iss >> value) || !iss.eof()) {
-        std::cout << "Wrong value: wrong format >> " << line << std::endl;
+    size_t idx;
+    try {
+        value = std::stof(valueStr, &idx);
+    } catch (const std::exception &) {
+        std::cout << RED << "Wrong value: cannot do stof >> " << line << std::endl << WHITE;
         return false;
     }
-    if (value < 0 || value > 1000) {
-        std::cout << "Wrong value: should between 0-1000 >> " << line << std::endl;
+    if (idx != valueStr.length()) {
+        std::cout << RED << "Wrong value: wrong format >> " << line << std::endl << WHITE;
+        return false;
+    }
+    if (value < 0) {
+        std::cout << RED << "Wrong value: should be >= 0 >> " << line << std::endl << WHITE;
+        return false;
+    }
+    if (value > 1000 && isLimited) {
+        std::cout << RED << "Wrong value: should be < 1000 >> " << line << std::endl << WHITE;
         return false;
     }
     return true;
