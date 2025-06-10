@@ -50,5 +50,6 @@ int	main(void) {
 	//std::cout << "min(a, d) = " << ::min( a, d ) << std::endl;
 	//std::cout << "max(a, d) = " << ::max( a, d ) << std::endl;
 
+	std::cout << BLUE << "\n----------Testing Done----------\n\n" << WHITE;
 	return (0);
 }
