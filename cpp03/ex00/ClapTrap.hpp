@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
+#include <string>
+#include <iostream>
 
 class ClapTrap
 {
@@ -40,6 +39,5 @@ class ClapTrap
 		
 };
 
-#endif
 
 

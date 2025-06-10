@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -37,5 +36,3 @@ class AMateria
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
-
-#endif

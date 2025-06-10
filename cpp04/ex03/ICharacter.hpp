@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#pragma once
 
-# include <string>
-# include "AMateria.hpp"
+#include <string>
+#include "AMateria.hpp"
 
 class AMateria;
 
@@ -29,5 +28,3 @@ class ICharacter
 
 		virtual void printCharacter() = 0;
 };
-
-#endif

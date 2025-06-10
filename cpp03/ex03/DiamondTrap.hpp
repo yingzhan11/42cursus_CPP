@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
+#include <string>
+#include <iostream>
 
-# include "ScavTrap.hpp"
-# include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 class DiamondTrap: public ScavTrap, public FragTrap
 {
@@ -37,4 +36,4 @@ class DiamondTrap: public ScavTrap, public FragTrap
 		void	printScavTrapValues();
 };
 
-#endif
+

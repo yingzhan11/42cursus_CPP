@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#pragma once
 
-# include <iostream>
-# include "AMateria.hpp"
+#include <iostream>
+#include "AMateria.hpp"
 
 class Cure: public AMateria
 {
@@ -29,4 +28,3 @@ class Cure: public AMateria
 		void use(ICharacter& target) override;
 };
 
-#endif

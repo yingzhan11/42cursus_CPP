@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
+#include <string>
+#include <iostream>
 
-# include "ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 class ScavTrap: public ClapTrap
 {
@@ -31,4 +30,3 @@ class ScavTrap: public ClapTrap
 		void	guardGate();
 };
 
-#endif

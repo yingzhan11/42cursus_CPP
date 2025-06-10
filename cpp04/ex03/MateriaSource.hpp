@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-# define MATERIASOURCE_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
-# include "IMateriaSource.hpp"
+#include <string>
+#include <iostream>
+#include "IMateriaSource.hpp"
 
 class MateriaSource: public IMateriaSource
 {
@@ -34,5 +33,3 @@ class MateriaSource: public IMateriaSource
 		
 		void printMateria() override;
 };
-
-#endif
