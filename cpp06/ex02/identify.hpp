@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IDENTIFY_HPP
-# define IDENTIFY_HPP
+#pragma once
 
 #include <iostream>
 #include "Base.hpp"
@@ -19,5 +18,3 @@
 Base* generate(void);
 void identify(Base* p);
 void identify(Base& p);
-
-#endif

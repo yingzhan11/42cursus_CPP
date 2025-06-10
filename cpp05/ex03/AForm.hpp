@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
-# include <exception>
-# include "Bureaucrat.hpp"
+#include <string>
+#include <iostream>
+#include <exception>
+#include "Bureaucrat.hpp"
 
-# define GREEN "\033[32m"
-# define WHITE "\033[0m"
+#define GREEN "\033[32m"
+#define WHITE "\033[0m"
 
 class Bureaucrat;
 
@@ -83,4 +82,4 @@ class AForm
 
 std::ostream& operator << (std::ostream& os, const AForm& form);
 
-#endif
+

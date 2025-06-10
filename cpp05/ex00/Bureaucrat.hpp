@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
+#include <string>
+#include <iostream>
 
 class Bureaucrat
 {
@@ -50,5 +49,3 @@ class Bureaucrat
 };
 
 std::ostream& operator << (std::ostream& os, const Bureaucrat& bure);
-
-#endif

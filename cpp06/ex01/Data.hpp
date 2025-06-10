@@ -10,14 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_HPP
-# define DATA_HPP
+#pragma once
 
-# include <iostream>
+#include <iostream>
 
 struct Data {
 	int id;
 	std::string name;
 };
-
-#endif

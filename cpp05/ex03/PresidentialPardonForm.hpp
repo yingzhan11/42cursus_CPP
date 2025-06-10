@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
-# include "AForm.hpp"
+#include <string>
+#include <iostream>
+#include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm
 {
@@ -29,5 +28,3 @@ class PresidentialPardonForm : public AForm
 
 		void executeThis() const override;
 };
-
-#endif
