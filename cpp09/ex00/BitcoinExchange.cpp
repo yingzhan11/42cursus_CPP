@@ -35,7 +35,7 @@ void BitcoinExchange::readDatabase(const std::string &filename)
     
     std::string line;
     // const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)$)");
-    const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)\s*$)");
+    const std::regex formatDB( R"(((^\d{4})-(\d{2})-(\d{2})),([+-]?\d+(\.\d+)?)$)" );
     //skip the first line
     std::getline(database, line);
     while (std::getline(database, line)) {
@@ -77,8 +77,7 @@ void BitcoinExchange::processFile(const std::string &filename) const
 
     std::string line;
     //correct format of each line need to match
-    // const std::regex format(R"(^(\d{4}-\d{2}-\d{2}) \| (-?\d+(?:\.\d+)?)$)"); //Linux
-    const std::regex formatF(R"(^(\d{4}-\d{2}-\d{2}) \| (-?\d+(?:\.\d+)?)\s*$)"); //WSL
+    const std::regex format(R"(^(\d{4}-\d{2}-\d{2}) \| (-?\d+(\.\d+)?)\s*$)");
     //skip the first line, then check other lines
     std::getline(file, line);
     while (std::getline(file, line)) {
@@ -88,7 +87,7 @@ void BitcoinExchange::processFile(const std::string &filename) const
         }
         //match line to the format
         std::smatch result;
-        if (!std::regex_match(line, result, formatF)) {
+        if (!std::regex_match(line, result, format)) {
             std::cout << RED << "Wrong line: invalid format >> " << line << std::endl << WHITE;
             continue;
         }
