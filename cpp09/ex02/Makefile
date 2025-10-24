@@ -1,8 +1,9 @@
-NAME = mutantStack
+NAME = PmergeMe
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
+DFLAGS = -DDEBUG -g
 
-SRCS = main.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)
@@ -26,5 +27,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+debug: CFLAGS += $(DFLAGS)
+debug: fclean all
 
 .PHONY: all clean fclean re
