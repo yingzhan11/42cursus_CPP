@@ -4,13 +4,13 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 class RPN
 {
 	private:
 		std::stack<double> _stack;
 
-		//void _parseInput(const std::string &input);
 		void _performOperation(char operat);
 
 	public:
@@ -20,6 +20,4 @@ class RPN
 		RPN &operator=(const RPN &other);
 
 		void calculation(const std::string &input);
-		
-
 };

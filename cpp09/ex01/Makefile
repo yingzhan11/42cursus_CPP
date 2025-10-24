@@ -2,7 +2,7 @@ NAME = RPN
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++11
 
-SRCS = main.cpp
+SRCS = main.cpp RPN.cpp
 
 OBJS_DIR = objs
 OBJS = $(SRCS:.cpp=.o)
