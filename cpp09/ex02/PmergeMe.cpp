@@ -6,9 +6,8 @@ PmergeMe::~PmergeMe() {}
 
 PmergeMe::PmergeMe(size_t ac, char **av)
 {
-	//set a max TODO
-	// if (ac > 5000)
-	// 	throw std::runtime_error("Error: too many numbers");
+	 if (ac > 10000)
+	 	throw std::runtime_error("Error: too many numbers. Max amoun of nbrs in this PmergeMe is 9999");
 	for (size_t i = 0; i < ac; i++)
 	{
 		std::string nbrStr(av[i]);
