@@ -7,7 +7,7 @@ PmergeMe::~PmergeMe() {}
 PmergeMe::PmergeMe(size_t ac, char **av)
 {
 	 if (ac > 10000)
-	 	throw std::runtime_error("Error: too many numbers. Max amoun of nbrs in this PmergeMe is 9999");
+	 	throw std::runtime_error("Error: too many numbers. Max amount of nbrs in this PmergeMe is 9999");
 	for (size_t i = 0; i < ac; i++)
 	{
 		std::string nbrStr(av[i]);
@@ -15,7 +15,7 @@ PmergeMe::PmergeMe(size_t ac, char **av)
 
 		//check if the input is valid, only nbrs
 		if (!_isDigitStr(nbrStr))
-			throw std::runtime_error("Error: input should be only numbers");
+			throw std::runtime_error("Error: input should be only positive Int numbers");
 		//convert input string to int
 		try {
 			nbr = std::stoi(nbrStr);
