@@ -94,18 +94,24 @@ void PmergeMe::_vecSort(std::vector<int> &vec)
 	_recDepth++;
 	_vecSort(A);
 	_recDepth--;
-	
-	/** Insert Min nbrs in B to A*/
-	const std::vector<std::size_t> order = _getInsertOrder(B.size());
 
 	#ifdef DEBUG
 	_debugContainers(false, A, B);
 	#endif
 
+	/** Insert Min nbrs in B to A*/
+	const std::vector<std::size_t> order = _getInsertOrder(B.size());
 	for (std::size_t idx : order) {
 		if (idx < B.size())
 			_vectorBinaryInsert(A, B[idx]);
 	}
+
+	#ifdef DEBUG
+	std::cout << COLOR_RETURN << std::string(_recDepth * 8, ' ') << "After insert Container A has " << A.size() << " nbrs: ";
+	_printContainer(A);
+	std::cout << "\n\n" << COLOR_RESET;;
+	#endif
+
 	vec.swap(A);
 }
 
@@ -149,13 +155,12 @@ void PmergeMe::_listSort(std::list<int> &list)
 	_listSort(A);
 	_recDepth--;
 
-	/** Insert Min nbrs in B to A*/
-	const std::vector<std::size_t> order = _getInsertOrder(B.size());
-
 	#ifdef DEBUG
 	_debugContainers(false, A, B);
 	#endif
 
+	/** Insert Min nbrs in B to A*/
+	const std::vector<std::size_t> order = _getInsertOrder(B.size());
 	for (std::size_t idx : order) {
 		if (idx < B.size()) {
 			auto itB = B.begin();
@@ -164,6 +169,13 @@ void PmergeMe::_listSort(std::list<int> &list)
 			_listBinaryInsert(A, value);
 		}
 	}
+	
+	#ifdef DEBUG
+	std::cout << COLOR_RETURN << std::string(_recDepth * 8, ' ') << "After insert Container A has " << A.size() << " nbrs: ";
+	_printContainer(A);
+	std::cout << "\n\n" << COLOR_RESET;;
+	#endif
+
 	list.swap(A);
 }
 
@@ -299,18 +311,17 @@ void PmergeMe::_printResult(size_t ac, char **av)
 	std::cout << "\nAfter sorted: ";
 	_printContainer(_vec);
 	std::cout << "\nTime to sort " << _vec.size() << " numbers with std::vector use: " << _vecTime.count() << " us\n";
-	std::cout << "Time to sort " << _list.size() << " numbers with std::list use: " << _listTime.count() << "us\n";
+	std::cout << "Time to sort " << _list.size() << " numbers with std::list use: " << _listTime.count() << " us\n";
 }
 
 void PmergeMe::_debugJacob(const std::vector<size_t>& jacob, const std::vector<size_t>& idx, const std::vector<size_t>& order)
 {
-	std::cout << COLOR_RETURN << std::string(_recDepth * 8, ' ') << "<<< Recursion Depth: " << _recDepth << "\n";
 	std::cout << COLOR_INFO << std::string(_recDepth * 8, ' ') << "Jacobsthal nbr: [ ";
 	_printContainer(jacob);
-    std::cout << "]  Jacobsthal index: [ ";
+    std::cout << " ]  Jacobsthal index: [ ";
 	_printContainer(idx);
-    std::cout << "]\n";
+    std::cout << " ]\n";
 	std::cout << std::string(_recDepth * 8, ' ') << "Insert index: [ ";
 	_printContainer(order);
-	std::cout << "]\n" << COLOR_RESET;
+	std::cout << " ]\n" << COLOR_RESET;
 }

@@ -51,13 +51,17 @@ class PmergeMe
 				std::cout << COLOR_ENTER;
 				std::cout << std::string(_recDepth * 8, ' ') << ">>> Recursion Depth: " << _recDepth << "\n";
 			}
-			else
+			else {
 				std::cout << COLOR_RETURN;
+				std::cout << std::string(_recDepth * 8, ' ') << "<<< Recursion Depth: " << _recDepth << "\n";
+			}
 			std::cout << std::string(_recDepth * 8, ' ') << "Container A has " << A.size() << " nbrs: ";
 			_printContainer(A);
 			std::cout << "\n" << std::string(_recDepth * 8, ' ') << "Container B has " << B.size() << " nbrs: ";
 			_printContainer(B);
-			std::cout << "\n\n" << COLOR_RESET;
+			if (recur)
+				std::cout << "\n";
+			std::cout << "\n" << COLOR_RESET;
 		}
 
 		template <typename Container>
