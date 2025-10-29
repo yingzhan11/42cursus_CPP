@@ -34,8 +34,8 @@ void BitcoinExchange::readDatabase(const std::string &filename)
         throw std::runtime_error("Wrong database: empty databse file");
     
     std::string line;
-    // const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)$)");
-    const std::regex formatDB( R"(((^\d{4})-(\d{2})-(\d{2})),([+-]?\d+(\.\d+)?)$)" );
+    const std::regex formatDB(R"(^(\d{4}-\d{2}-\d{2}),(-?\d+(?:\.\d+)?)$)");
+    // const std::regex formatDB( R"(((^\d{4})-(\d{2})-(\d{2})),([+-]?\d+(\.\d+)?)$)" );
     //skip the first line
     std::getline(database, line);
     while (std::getline(database, line)) {
@@ -176,4 +176,5 @@ float BitcoinExchange::getExchangeRate(const std::string &date) const
     --it;
     return it->second;
 }
+
 
